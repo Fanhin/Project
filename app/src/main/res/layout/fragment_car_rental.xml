@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Tab.CarRentalFragment">
 
     <ScrollView
@@ -51,8 +52,10 @@
 
                         <Button
                             android:id="@+id/carRentalSave"
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
+                            style="@style/Widget.MyApp.Button"
+                            android:layout_marginRight="10dp"
                             android:text="Save" />
 
 
@@ -82,57 +85,131 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="10dp"
                                 android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
 
-                                <EditText
-                                    android:id="@+id/edit_text_rental_agency"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_rental_agency"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Rental Agency"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDepartureDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Rental Agency"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_rental_agency"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_pickup_date_time"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                   -->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Pick-up DateTime"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPick-upDateTime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Pick-up DateTime"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_pickup_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_pickup_location"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    -->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Pick-up Location"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPick-upLocation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Pick-up Location"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_pickup_location"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_car_rental_pickup_address"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    -->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Pick-up Address"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPick-upAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Pick-up Address"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_car_rental_pickup_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_car_rental_phone"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                  -->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Phone"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPhone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Phone"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_car_rental_phone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_pickup_date_time"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Pick-up DateTime"
-                                android:text="" />
 
-                            <EditText
-                                android:id="@+id/edit_text_pickup_location"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Pick-up Location"
-                                android:text="" />
-
-                            <EditText
-                                android:id="@+id/edit_text_car_rental_pickup_address"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Pick-up Address"
-                                android:text="" />
-
-                            <EditText
-                                android:id="@+id/edit_text_car_rental_phone"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Phone"
-                                android:text="" />
 
 
 
@@ -171,38 +248,82 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <EditText
-                                    android:id="@+id/edit_text_drop_off_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_drop_off_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Drop-off DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDrop-offDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Drop-off DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_drop_off_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_drop_off_location"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Location"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldLocation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Location"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_drop_off_location"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_drop_off_address"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Address"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_drop_off_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_drop_off_location"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Location"
-                                android:inputType="textPersonName"
-                                android:text="" />
-                            <EditText
-                                android:id="@+id/edit_text_drop_off_address"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Address"
-                                android:inputType="textPersonName"
-                                android:text="" />
+
 
 
                         </LinearLayout>
@@ -222,7 +343,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
+                        android:layout_marginBottom="50dp"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -231,38 +353,92 @@
 
 
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"/>
 
-                            <EditText
-                                android:id="@+id/edit_text_car_rental_website"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_car_rental_website"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Website"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldWebsite"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
                                 android:hint="Website"
-                                android:inputType="textPersonName"
-                                android:text="" />
-                            <EditText
-                                android:id="@+id/edit_text_car_rental_email"
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_car_rental_website"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_car_rental_email"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Email"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
                                 android:hint="Email"
-                                android:inputType="textPersonName"
-                                android:text="" />
-                            <EditText
-                                android:id="@+id/edit_text_car_rental_description"
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_car_rental_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_car_rental_description"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Description"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
                                 android:hint="Description"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_car_rental_description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldConfirmation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Confirmation"
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_car_rental_confirmation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
                         </LinearLayout>

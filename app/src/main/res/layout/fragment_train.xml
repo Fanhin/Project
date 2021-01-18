@@ -52,8 +52,10 @@
 
                         <Button
                             android:id="@+id/trainSave"
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            style="@style/Widget.MyApp.Button"
                             android:text="Save" />
 
 
@@ -82,56 +84,89 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="10dp"
                                 android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
 
-                                <EditText
-                                    android:id="@+id/edit_text_train_departure_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_departure_date_time"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Departure DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDepartureDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Departure DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_departure_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_train_station"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Station"-->
+<!--                                    android:text="" />-->
 
-                            </LinearLayout>
-
-                            <EditText
-                                android:id="@+id/edit_text_departure_train_station"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Station"
-                                android:text="" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/edit_text_departure_train_address"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldStation"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Station"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_train_station"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_train_address"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:hint="Address"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_train_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
 
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal"/>
+
+
+
+
+
 
                         </LinearLayout>
 
@@ -150,6 +185,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="50dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -162,55 +198,146 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <EditText
-                                    android:id="@+id/edit_text_train_arrival_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_arrival_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Arrival DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivalDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Arrival DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_arrival_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_arrival_station"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Station"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivalStation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Station"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_arrival_station"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldFlightNumber"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:hint="Train Type"
+
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    app:endIconMode="clear_text">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_type"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_train_arrival_station"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Station"
-                                android:inputType="textPersonName"
-                                android:text="" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
-                                    android:id="@+id/edit_text_train_type"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Train Type"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_type"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Train Type"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
 
-                                <EditText
-                                    android:id="@+id/edit_text_train_number"
-                                    android:layout_width="wrap_content"
+                                <!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_number"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Train #"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldTrainNumber"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Train #"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:hint="Train Number"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_number"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content"
+
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldTrainCoach"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Coach #"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="right"
+
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_coach"
+                                        android:layout_gravity="right"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -222,25 +349,63 @@
                                 android:orientation="horizontal"
                                 >
 
-                                <EditText
-                                    android:id="@+id/edit_text_train_class"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Train Class"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_class"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Train Class"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
 
-                                <EditText
-                                    android:id="@+id/edit_text_train_seats"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldTrainClass"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Train Class"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_class"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content"
+
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_train_seats"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Seats"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldSeats"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:hint="Seats"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="right"
+
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_train_seats"
+                                        android:layout_gravity="right"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 

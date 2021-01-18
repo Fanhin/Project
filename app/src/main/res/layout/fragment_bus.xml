@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Tab.BusFragment">
 
     <ScrollView
@@ -51,8 +52,10 @@
 
                         <Button
                             android:id="@+id/busSave"
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
+                            style="@style/Widget.MyApp.Button"
+                            android:layout_marginRight="10dp"
                             android:text="Save" />
 
 
@@ -81,56 +84,90 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="10dp"
                                 android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
 
-                                <EditText
-                                    android:id="@+id/edit_text_bus_departure_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_bus_departure_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Departure DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDepartureDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Departure DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_bus_departure_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_bus_license_plate"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Bus License Plate"-->
+<!--                                    android:text="" />-->
 
-                            </LinearLayout>
-
-                            <EditText
-                                android:id="@+id/edit_text_bus_license_plate"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Bus License Plate"
-                                android:text="" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/edit_text_departure_bus_address"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldBusLicensePlate"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Bus License Plate"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_bus_license_plate"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_bus_address"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAddress1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:hint="Address"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_bus_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
 
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal"/>
+
+
+
+
 
                         </LinearLayout>
 
@@ -149,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -161,40 +198,63 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <EditText
-                                    android:id="@+id/edit_text_bus_arrival_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_bus_arrival_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Arrival DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivalDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Arrival DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_bus_arrival_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_bus_arrival_address"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivalAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Address"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_bus_arrival_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_bus_arrival_address"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Address"
-                                android:inputType="textPersonName"
-                                android:text="" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal"/>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                />
+
+
 
 
                         </LinearLayout>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Tab.BoatFragment">
 
     <ScrollView
@@ -32,6 +33,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="50dp"
                     android:orientation="vertical">
 
 
@@ -51,8 +53,10 @@
 
                         <Button
                             android:id="@+id/boatSave"
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
+                            style="@style/Widget.MyApp.Button"
+                            android:layout_marginRight="10dp"
                             android:text="Save" />
 
 
@@ -81,30 +85,62 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="10dp"
                                 android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
 
-                                <EditText
-                                    android:id="@+id/edit_text_boat_departure_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_boat_departure_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Departure DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDepartureDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Departure DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_boat_departure_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_boat_name"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="10dp"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Name"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Name"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_boat_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
 
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_boat_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Name"
-                                android:text="" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -113,24 +149,55 @@
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
-                                    android:id="@+id/edit_text_departure_boat_location"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_boat_location"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Location"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldLocation"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Location"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
-                                <EditText
-                                    android:id="@+id/edit_text_departure_boat_address"
-                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_boat_location"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_boat_address"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAddress"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Address"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_boat_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
@@ -165,43 +232,84 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-
-
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <EditText
-                                    android:id="@+id/edit_text_boat_arrival_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_boat_arrival_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Arrival DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivalDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Arrival DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_boat_arrival_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_arrival_boat_location"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Location"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldLocation2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Location"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_arrival_boat_location"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_arrival_boat_address"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAddress2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Address"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_arrival_boat_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_arrival_boat_location"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Location"
-                                android:inputType="textPersonName"
-                                android:text="" />
-                            <EditText
-                                android:id="@+id/edit_text_arrival_boat_address"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Address"
-                                android:inputType="textPersonName"
-                                android:text="" />
+
 
 
                             <LinearLayout
@@ -210,25 +318,58 @@
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
-                                    android:id="@+id/edit_text_boat_port_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Port Name"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_boat_port_name"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Port Name"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
 
-                                <EditText
-                                    android:id="@+id/edit_text_boat_port_address"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPortName"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Port Name"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_boat_port_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_boat_port_address"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Port Address"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPortAddress"
+                                    android:layout_width="180dp"
+                                    android:layout_height="wrap_content"
                                     android:hint="Port Address"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_boat_port_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -240,37 +381,100 @@
                                 android:orientation="horizontal"
                                 >
 
-                                <EditText
-                                    android:id="@+id/edit_text_cabin_type"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Cabin Type"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_cabin_type"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Cabin Type"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
 
-                                <EditText
-                                    android:id="@+id/edit_text_cabin_number"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldCabinType"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Cabin Type"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_cabin_type"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_cabin_number"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Cabin Number"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldCabinNumber"
+                                    android:layout_width="180dp"
+                                    android:layout_height="wrap_content"
                                     android:hint="Cabin Number"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_cabin_number"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_boat_description"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_boat_description"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Description"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
+                                android:layout_marginTop="10dp"
                                 android:hint="Description"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_boat_description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Phone"
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_boat_phone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
                         </LinearLayout>

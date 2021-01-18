@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
 
@@ -31,7 +32,7 @@
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_weight="0.2"
@@ -40,10 +41,11 @@
 
                     <Button
                         android:id="@+id/lodging_save_button"
-                        android:layout_width="match_parent"
+                        android:layout_width="80dp"
+                        style="@style/Widget.MyApp.Button"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_weight="0.8"
+                        android:layout_marginRight="10dp"
                         android:text="save"
                         android:textSize="12dp" />
 
@@ -68,25 +70,62 @@
                             android:orientation="vertical">
 
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_title"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_title"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Lodging Title"-->
+<!--                                android:inputType="none" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
                                 android:hint="Lodging Title"
-                                android:inputType="none" />
+
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_title"
 
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_description"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Description"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
                                 android:hint="Description"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
                         </LinearLayout>
@@ -96,18 +135,36 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginHorizontal="10dp"
-                            android:layout_marginTop="10dp"
+
                             android:orientation="horizontal">
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_check_in_date_time"
-                                android:layout_width="wrap_content"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_check_in_date_time"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Check-in DateTime"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingCheck-inDateTime"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
                                 android:hint="Check-in DateTime"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_check_in_date_time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
@@ -115,18 +172,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginHorizontal="10dp"
-                            android:layout_marginTop="10dp"
                             android:orientation="horizontal">
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_check_out_date_time"
-                                android:layout_width="wrap_content"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_check_out_date_time"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Check-out DateTime"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingCheck-outDateTime"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
                                 android:hint="Check-out DateTime"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_check_out_date_time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -156,58 +230,169 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_address"
-                                android:layout_width="wrap_content"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_address"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Address"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingAddress"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
                                 android:hint="Address"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
                         </LinearLayout>
 
-                        <EditText
-                            android:id="@+id/edit_text_lodging_phone"
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_text_lodging_phone"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:ems="10"-->
+<!--                            android:hint="Phone"-->
+<!--                            android:inputType="textPersonName"-->
+<!--                            android:text="" />-->
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/outlinedTextFieldLodgingPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:ems="10"
                             android:hint="Phone"
-                            android:inputType="textPersonName"
-                            android:text="" />
+                            app:endIconMode="clear_text"
+                            app:endIconDrawable="@drawable/ic_cancel"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edit_text_lodging_phone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="10dp"
                             android:orientation="vertical">
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_website"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
-                                android:hint="Website"
-                                android:inputType="textPersonName"
-                                android:text="" />
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_website"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Website"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
 
-                            <EditText
-                                android:id="@+id/edit_text_lodging_email"
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingWebsite"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
+                                android:hint="Website"
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_website"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_lodging_email"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Email"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldLodgingEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:hint="Email"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_lodging_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
                         </LinearLayout>
                     </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/pickImagesLodgingBtn"
+                        android:layout_width="wrap_content"
+                        style="@style/Widget.MyApp.Button"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Add Images"
+                        android:textSize="12dp" />
+                    <ImageSwitcher
+                        android:layout_width="match_parent"
+                        android:id="@+id/imageLodgingIs"
+                        android:layout_height="450dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/previousLodgingBtn"
+                            android:text="Previous"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <Button
+                            android:id="@+id/nextLodgingBtn"
+                            android:text="Next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

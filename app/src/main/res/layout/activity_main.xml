@@ -10,28 +10,28 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/trip_item">
-
+        tools:listitem="@layout/airplane_item"
+        >
     </androidx.recyclerview.widget.RecyclerView>
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/testBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/button_add_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add"
-        tools:ignore="VectorDrawableCompat" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/testBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:clickable="true"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/button_add_activity"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:srcCompat="@drawable/ic_add"-->
+<!--        tools:ignore="VectorDrawableCompat" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:borderWidth="0dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#FF7900"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-
+        app:borderWidth="0dp"
         android:backgroundTint="#FF7900"
         android:src="@drawable/ic_hotel"
         app:layout_constraintBottom_toTopOf="@+id/button_add_transportation"
@@ -59,6 +59,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#FF7900"
         android:src="@drawable/ic_transportation"
+        app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

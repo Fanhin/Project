@@ -5,7 +5,9 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity(tableName = "trip_table")
 public class Trip {
@@ -29,10 +31,11 @@ public class Trip {
 
     //constructor for airplane
 
-    public Trip(String airplaneDepartureDateTime, String departureAirplaneAirline, String departureAirplaneFlightNumber,
+    public Trip(int type,String airplaneDepartureDateTime, String departureAirplaneAirline, String departureAirplaneFlightNumber,
                 String departureAirplaneSeats, String departureAirplaneTerminal, String departureAirplaneGate,
-                String airplaneArrivalDateTime, String arrivalArrivingCityOrAirport, String arrivalTerminal, String arrivalGate) {
-
+                String airplaneArrivalDateTime, String arrivalArrivingCityOrAirport, String arrivalTerminal,
+                String arrivalGate,String airplaneDescription) {
+        this.type = type;
         this.airplaneDepartureDateTime = airplaneDepartureDateTime;
         this.departureAirplaneAirline = departureAirplaneAirline;
         this.departureAirplaneFlightNumber = departureAirplaneFlightNumber;
@@ -43,6 +46,7 @@ public class Trip {
         this.arrivalArrivingCityOrAirport = arrivalArrivingCityOrAirport;
         this.arrivalTerminal = arrivalTerminal;
         this.arrivalGate = arrivalGate;
+        this.airplaneDescription = airplaneDescription;
 
 
     }
@@ -56,13 +60,15 @@ public class Trip {
     private String trainArrivalStation;
     private String trainType;
     private String trainNumber;
+    private String trainCoach;
     private String trainClass;
     private String trainSeats;
 
     //constructor for train
 
-    public Trip(String trainDepartureDateTime, String departureTrainStation, String departureTrainAddress, String trainArrivalDateTime,String trainArrivalStation,
-                String trainType, String trainNumber, String trainClass, String trainSeats) {
+    public Trip(int type,String trainDepartureDateTime, String departureTrainStation, String departureTrainAddress, String trainArrivalDateTime,String trainArrivalStation,
+                String trainType, String trainNumber,String trainCoach, String trainClass, String trainSeats) {
+        this.type = type;
         this.trainDepartureDateTime = trainDepartureDateTime;
         this.departureTrainStation = departureTrainStation;
         this.departureTrainAddress = departureTrainAddress;
@@ -70,6 +76,7 @@ public class Trip {
         this.trainArrivalStation = trainArrivalStation;
         this.trainType = trainType;
         this.trainNumber = trainNumber;
+        this.trainCoach = trainCoach;
         this.trainClass = trainClass;
         this.trainSeats = trainSeats;
     }
@@ -83,7 +90,8 @@ public class Trip {
 
     //constructor for Bus
 
-    public Trip(String busDepartureDateTime, String busLicensePlate, String departureBusAddress, String busArrivalDateTime, String busArrivalAddress) {
+    public Trip(int type,String busDepartureDateTime, String busLicensePlate, String departureBusAddress, String busArrivalDateTime, String busArrivalAddress) {
+        this.type = type;
         this.busDepartureDateTime = busDepartureDateTime;
         this.busLicensePlate = busLicensePlate;
         this.departureBusAddress = departureBusAddress;
@@ -104,10 +112,12 @@ public class Trip {
     private String cabinType;
     private String cabinNumber;
     private String boatDescription;
+    private String boatPhone;
 
-    public Trip(String boatDepartureDateTime, String boatName, String departureBoatLocation, String departureBoatAddress,
+    public Trip(int type,String boatDepartureDateTime, String boatName, String departureBoatLocation, String departureBoatAddress,
                 String boatArrivalDateTime, String arrivalBoatLocation, String arrivalBoatAddress, String portName, String portAddress,
-                String cabinType, String cabinNumber, String boatDescription) {
+                String cabinType, String cabinNumber, String boatDescription ,String boatPhone) {
+        this.type = type;
         this.boatDepartureDateTime = boatDepartureDateTime;
         this.boatName = boatName;
         this.departureBoatLocation = departureBoatLocation;
@@ -120,6 +130,7 @@ public class Trip {
         this.cabinType = cabinType;
         this.cabinNumber = cabinNumber;
         this.boatDescription = boatDescription;
+        this.boatPhone = boatPhone;
     }
 
     //Car rental transportation
@@ -134,11 +145,13 @@ public class Trip {
     private String carRentalWebsite;
     private String carRentalEmail;
     private String carRentalDescription;
+    private String carRentalConfirmation;
 
 
-    public Trip(String rentalAgency, String pickupDateTime, String pickupLocation, String carRentalPickupAddress,
+    public Trip(int type,String rentalAgency, String pickupDateTime, String pickupLocation, String carRentalPickupAddress,
                 String carRentalPhone, String dropOffDateTime, String dropOffLocation, String dropOffAddress,
-                String carRentalWebsite, String carRentalEmail,String carRentalDescription) {
+                String carRentalWebsite, String carRentalEmail,String carRentalDescription,String carRentalConfirmation) {
+        this.type = type;
         this.rentalAgency = rentalAgency;
         this.pickupDateTime = pickupDateTime;
         this.pickupLocation = pickupLocation;
@@ -150,9 +163,10 @@ public class Trip {
         this.carRentalWebsite = carRentalWebsite;
         this.carRentalEmail = carRentalEmail;
         this.carRentalDescription = carRentalDescription;
+        this.carRentalConfirmation = carRentalConfirmation;
     }
 
-    //lodging
+    //lodging 9*
     private String lodgingTitle;
     private String lodgingCheckInDateTime;
     private String lodgingCheckOutDateTime;
@@ -161,11 +175,25 @@ public class Trip {
     private String lodgingPhone;
     private String lodgingWebsite;
     private String lodgingEmail;
+    private String lodgingImage1;
+    private String lodgingImage2;
+    private String lodgingImage3;
+    private ArrayList<String> uriLodgingPath;
+
+    public ArrayList<String> getUriLodgingPath() {
+        return uriLodgingPath;
+    }
+
+    public void setUriLodgingPath(ArrayList<String> uriLodgingPath) {
+        this.uriLodgingPath = uriLodgingPath;
+    }
     //constructor for lodging
 
 
-    public Trip(String lodgingTitle, String lodgingCheckInDateTime, String lodgingCheckOutDateTime,
-                String lodgingDescription, String lodgingAddress, String lodgingPhone, String lodgingWebsite, String lodgingEmail) {
+    public Trip(int type, String lodgingTitle, String lodgingCheckInDateTime, String lodgingCheckOutDateTime,
+                String lodgingDescription, String lodgingAddress, String lodgingPhone, String lodgingWebsite, String lodgingEmail
+            , String lodgingImage1, String lodgingImage2, String lodgingImage3, ArrayList<String> uriLodgingPath) {
+        this.type = type;
         this.lodgingTitle = lodgingTitle;
         this.lodgingCheckInDateTime = lodgingCheckInDateTime;
         this.lodgingCheckOutDateTime = lodgingCheckOutDateTime;
@@ -174,6 +202,10 @@ public class Trip {
         this.lodgingPhone = lodgingPhone;
         this.lodgingWebsite = lodgingWebsite;
         this.lodgingEmail = lodgingEmail;
+        this.lodgingImage1 = lodgingImage1;
+        this.lodgingImage2 = lodgingImage2;
+        this.lodgingImage3 = lodgingImage3;
+        this.uriLodgingPath = uriLodgingPath;
     }
 
     //activity
@@ -187,12 +219,18 @@ public class Trip {
     private String activityWebsite;
     private String activityEmail;
     private int activityPriority;
+    private  String activityImage1;
+    private  String activityImage2;
+    private  String activityImage3;
+
+
 
     //constructor for activity
 
-    public Trip(String activityTitle, String activityDestination, String activityDescription,
+    public Trip(int type,String activityTitle, String activityDestination, String activityDescription,
                 String activityStartDateTime, String activityEndDateTime, String activityAddress,
-                String activityPhone, String activityWebsite, String activityEmail, int activityPriority) {
+                String activityPhone, String activityWebsite, String activityEmail, int activityPriority,String activityImage1,String activityImage2,String activityImage3) {
+        this.type = type;
         this.activityTitle = activityTitle;
         this.activityDestination = activityDestination;
         this.activityDescription = activityDescription;
@@ -203,8 +241,20 @@ public class Trip {
         this.activityWebsite = activityWebsite;
         this.activityEmail = activityEmail;
         this.activityPriority = activityPriority;
+        this.activityImage1 = activityImage1;
+        this.activityImage2 = activityImage2;
+        this.activityImage3 = activityImage3;
     }
 
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public Trip() {
 
@@ -753,5 +803,78 @@ public class Trip {
 
     public void setActivityAddress(String activityAddress) {
         this.activityAddress = activityAddress;
+    }
+
+    public String getTrainCoach() {
+        return trainCoach;
+    }
+
+    public void setTrainCoach(String trainCoach) {
+        this.trainCoach = trainCoach;
+    }
+
+    public String getBoatPhone() {
+        return boatPhone;
+    }
+
+    public void setBoatPhone(String boatPhone) {
+        this.boatPhone = boatPhone;
+    }
+
+    public String getCarRentalConfirmation() {
+        return carRentalConfirmation;
+    }
+
+    public void setCarRentalConfirmation(String carRentalConfirmation) {
+        this.carRentalConfirmation = carRentalConfirmation;
+    }
+
+    public String getLodgingImage1() {
+        return lodgingImage1;
+    }
+
+    public void setLodgingImage1(String lodgingImage1) {
+        this.lodgingImage1 = lodgingImage1;
+    }
+
+
+    public String getLodgingImage2() {
+        return lodgingImage2;
+    }
+
+    public void setLodgingImage2(String lodgingImage2) {
+        this.lodgingImage2 = lodgingImage2;
+    }
+
+    public String getLodgingImage3() {
+        return lodgingImage3;
+    }
+
+    public void setLodgingImage3(String lodgingImage3) {
+        this.lodgingImage3 = lodgingImage3;
+    }
+
+    public String getActivityImage1() {
+        return activityImage1;
+    }
+
+    public void setActivityImage1(String activityImage1) {
+        this.activityImage1 = activityImage1;
+    }
+
+    public String getActivityImage2() {
+        return activityImage2;
+    }
+
+    public void setActivityImage2(String activityImage2) {
+        this.activityImage2 = activityImage2;
+    }
+
+    public String getActivityImage3() {
+        return activityImage3;
+    }
+
+    public void setActivityImage3(String activityImage3) {
+        this.activityImage3 = activityImage3;
     }
 }

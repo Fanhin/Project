@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -44,6 +45,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final  String EXTRA_TrainArrivalStation="com.example.tripbuddyv2.EXTRA_TrainArrivalStation";
     public static final  String EXTRA_TrainType="com.example.tripbuddyv2.EXTRA_TrainType";
     public static final  String EXTRA_TrainNumber="com.example.tripbuddyv2.EXTRA_TrainNumber";
+    public static final  String EXTRA_TrainCoach="com.example.tripbuddyv2.EXTRA_TrainCoach";
     public static final  String EXTRA_TrainClass="com.example.tripbuddyv2.EXTRA_TrainClass";
     public static final  String EXTRA_TrainSeats="com.example.tripbuddyv2.EXTRA_TrainSeats";
     //bus tag
@@ -65,6 +67,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final  String EXTRA_CabinType="com.example.tripbuddyv2.EXTRA_CabinType";
     public static final  String EXTRA_CabinNumber="com.example.tripbuddyv2.EXTRA_CabinNumber";
     public static final  String EXTRA_BoatDescription="com.example.tripbuddyv2.EXTRA_BoatDescription";
+    public static final  String EXTRA_BoatPhone="com.example.tripbuddyv2.EXTRA_BoatPhone";
     //car rental tag
     public static final  String EXTRA_RentalAgency="com.example.tripbuddyv2.EXTRA_RentalAgency";
     public static final  String EXTRA_PickupDateTime="com.example.tripbuddyv2.EXTRA_PickupDateTime";
@@ -77,6 +80,8 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final  String EXTRA_CarRentalWebsite="com.example.tripbuddyv2.EXTRA_CarRentalWebsite";
     public static final  String EXTRA_CarRentalEmail="com.example.tripbuddyv2.EXTRA_CarRentalEmail";
     public static final  String EXTRA_CarRentalDescription="com.example.tripbuddyv2.EXTRA_CarRentalDescription";
+    public static final  String EXTRA_CarRentalConfirmation="com.example.tripbuddyv2.EXTRA_CarRentalConfirmation";
+
 
     AirplaneFragment airplaneFragment;
     TrainFragment trainFragment;
@@ -86,12 +91,16 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
 
     Spinner spinner;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transportation_spinner);
 
         spinner = findViewById(R.id.spinner);
+
+
         airplaneFragment = new AirplaneFragment();
         trainFragment = new TrainFragment();
         busFragment = new BusFragment();
@@ -104,6 +113,8 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(this);
+
+
 
 
 

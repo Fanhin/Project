@@ -31,8 +31,11 @@ public class TrainFragment extends Fragment {
     public static final  String EXTRA_TrainArrivalStation="com.example.tripbuddyv2.EXTRA_TrainArrivalStation";
     public static final  String EXTRA_TrainType="com.example.tripbuddyv2.EXTRA_TrainType";
     public static final  String EXTRA_TrainNumber="com.example.tripbuddyv2.EXTRA_TrainNumber";
+    public static final  String EXTRA_TrainCoach="com.example.tripbuddyv2.EXTRA_TrainNumber";
     public static final  String EXTRA_TrainClass="com.example.tripbuddyv2.EXTRA_TrainClass";
     public static final  String EXTRA_TrainSeats="com.example.tripbuddyv2.EXTRA_TrainSeats";
+
+    public static final int EXTRA_Train = 2;
 
     EditText  editTextTrainDepartureDateTime;
     EditText  editTextDepartureTrainStation;
@@ -41,6 +44,7 @@ public class TrainFragment extends Fragment {
     EditText  editTextTrainArrivalStation;
     EditText  editTextTrainType;
     EditText  editTextTrainNumber;
+    EditText  editTextTrainCoach;
     EditText  editTextTrainClass;
     EditText  editTextTrainSeats;
 
@@ -60,6 +64,7 @@ public class TrainFragment extends Fragment {
           editTextTrainArrivalStation=view.findViewById(R.id.edit_text_train_arrival_station);
           editTextTrainType=view.findViewById(R.id.edit_text_train_type);
           editTextTrainNumber=view.findViewById(R.id.edit_text_train_number);
+          editTextTrainCoach=view.findViewById(R.id.edit_text_train_coach);
           editTextTrainClass=view.findViewById(R.id.edit_text_train_class);
           editTextTrainSeats=view.findViewById(R.id.edit_text_train_seats);
 
@@ -98,6 +103,7 @@ public class TrainFragment extends Fragment {
          String trainArrivalStationText= editTextTrainArrivalStation.getText().toString();
          String trainTypeText= editTextTrainType.getText().toString();
          String trainNumberText= editTextTrainNumber.getText().toString();
+         String trainCoachText = editTextTrainCoach.getText().toString();
          String trainClassText= editTextTrainClass.getText().toString();
          String trainSeatsText= editTextTrainSeats.getText().toString();
 
@@ -114,10 +120,11 @@ public class TrainFragment extends Fragment {
         trainData.putExtra(EXTRA_TrainArrivalStation,trainArrivalStationText);
         trainData.putExtra(EXTRA_TrainType,trainTypeText);
         trainData.putExtra(EXTRA_TrainNumber,trainNumberText);
+        trainData.putExtra(EXTRA_TrainCoach,trainCoachText);
         trainData.putExtra(EXTRA_TrainClass,trainClassText);
         trainData.putExtra(EXTRA_TrainSeats,trainSeatsText);
 
-        getActivity().setResult(Activity.RESULT_OK, trainData);
+        getActivity().setResult(EXTRA_Train, trainData);
         getActivity().finish();
 
 

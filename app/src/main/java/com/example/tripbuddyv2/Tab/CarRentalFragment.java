@@ -35,6 +35,9 @@ public class CarRentalFragment extends Fragment {
     public static final  String EXTRA_CarRentalWebsite="com.example.tripbuddyv2.EXTRA_CarRentalWebsite";
     public static final  String EXTRA_CarRentalEmail="com.example.tripbuddyv2.EXTRA_CarRentalEmail";
     public static final  String EXTRA_CarRentalDescription="com.example.tripbuddyv2.EXTRA_CarRentalDescription";
+    public static final  String EXTRA_CarRentalConfirmation="com.example.tripbuddyv2.EXTRA_CarRentalConfirmation";
+
+    public static final int EXTRA_Car_rental = 5;
 
      EditText editTextRentalAgency;
     EditText editTextPickupDateTime;
@@ -47,6 +50,7 @@ public class CarRentalFragment extends Fragment {
     EditText editTextCarRentalWebsite;
     EditText editTextCarRentalEmail;
     EditText editTextCarRentalDescription;
+    EditText editTextCarRentalConfirmation;
 
     Button carRentalSave;
 
@@ -67,6 +71,7 @@ public class CarRentalFragment extends Fragment {
          editTextCarRentalWebsite=view.findViewById(R.id.edit_text_car_rental_website);
          editTextCarRentalEmail=view.findViewById(R.id.edit_text_car_rental_email);
          editTextCarRentalDescription=view.findViewById(R.id.edit_text_car_rental_description);
+        editTextCarRentalConfirmation=view.findViewById(R.id.edit_text_car_rental_confirmation);
 
          carRentalSave=view.findViewById(R.id.carRentalSave);
 
@@ -106,6 +111,7 @@ public class CarRentalFragment extends Fragment {
          String carRentalWebsiteText = editTextCarRentalWebsite.getText().toString();
          String carRentalEmailText = editTextCarRentalEmail.getText().toString();
          String carRentalDescriptionText = editTextCarRentalDescription.getText().toString();
+         String carRentalConfirmation = editTextCarRentalConfirmation.getText().toString();
 
         if (pickupDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
@@ -124,8 +130,9 @@ public class CarRentalFragment extends Fragment {
         carRentalData.putExtra(EXTRA_CarRentalWebsite,carRentalWebsiteText);
         carRentalData.putExtra(EXTRA_CarRentalEmail,carRentalEmailText);
         carRentalData.putExtra(EXTRA_CarRentalDescription,carRentalDescriptionText);
+        carRentalData.putExtra(EXTRA_CarRentalConfirmation,carRentalConfirmation);
 
-        getActivity().setResult(Activity.RESULT_OK, carRentalData);
+        getActivity().setResult(EXTRA_Car_rental, carRentalData);
         getActivity().finish();
 
 }

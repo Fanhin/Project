@@ -52,8 +52,10 @@
 
                         <Button
                             android:id="@+id/airplaneSave"
-                            android:layout_width="wrap_content"
+                            style="@style/Widget.MyApp.Button"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
                             android:text="Save" />
 
 
@@ -82,30 +84,65 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="10dp"
                                 android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
 
-                                <EditText
-                                    android:id="@+id/edit_text_airplane_departure_date_time"
-                                    android:layout_width="wrap_content"
+
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_airplane_departure_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Departure DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDepartureDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Departure DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_airplane_departure_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_airplane_airline"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginHorizontal="10dp"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:hint="Airline"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAirline"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Airline"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_airplane_airline"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_departure_airplane_airline"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
-                                android:hint="Airline"
-                                android:text="" />
+
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -114,25 +151,60 @@
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
-                                    android:id="@+id/edit_text_departure_airplane_flight_number"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_airplane_flight_number"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Flight Number"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldFlightNumber"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Flight Number"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_airplane_flight_number"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
-                                <EditText
-                                    android:id="@+id/edit_text_departure_airplane_seats"
-                                    android:layout_width="wrap_content"
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_airplane_seats"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Seats"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldSeats"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Seats"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="right"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_airplane_seats"
+                                        android:layout_gravity="right"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
@@ -140,28 +212,65 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="10dp"
-                                android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
-                                    android:id="@+id/edit_text_departure_airplane_terminal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Terminal"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_airplane_terminal"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Terminal"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
 
-                                <EditText
-                                    android:id="@+id/edit_text_departure_airplane_gate"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldTerminal1"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Terminal"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_airplane_terminal"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content"
+
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_departure_airplane_gate"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Gate"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldGate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:hint="Gate"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="right"
+
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_departure_airplane_gate"
+                                        android:layout_gravity="right"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
@@ -182,6 +291,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="50dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -194,29 +304,58 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <EditText
-                                    android:id="@+id/edit_text_airplane_arrival_date_time"
-                                    android:layout_width="wrap_content"
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_airplane_arrival_date_time"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Arrival DateTime"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivalDateTime"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
                                     android:hint="Arrival DateTime"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_airplane_arrival_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_arrival_arriving_city_or_airport"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="10dp"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Arriving City or Airport"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldArrivingCityOrAirport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Arriving City or Airport"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_arrival_arriving_city_or_airport"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/edit_text_arrival_arriving_city_or_airport"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:ems="10"
-                                android:hint="Arriving City or Airport"
-                                android:inputType="textPersonName"
-                                android:text="" />
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -224,39 +363,92 @@
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
-                                <EditText
-                                    android:id="@+id/edit_text_arrival_terminal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
-                                    android:hint="Terminal"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_arrival_terminal"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Terminal"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
 
-                                <EditText
-                                    android:id="@+id/edit_text_arrival_gate"
-                                    android:layout_width="wrap_content"
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldTerminal2"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:ems="10"
+                                    android:hint="Terminal"
+                                    android:layout_gravity="left"
+                                    app:endIconMode="clear_text"
+
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_arrival_terminal"
+                                        android:layout_width="match_parent"
+                                        android:layout_gravity="left"
+                                        android:layout_height="wrap_content"
+
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+<!--                                <EditText-->
+<!--                                    android:id="@+id/edit_text_arrival_gate"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:ems="10"-->
+<!--                                    android:hint="Gate"-->
+<!--                                    android:inputType="textPersonName"-->
+<!--                                    android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldGate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:hint="Gate"
-                                    android:inputType="textPersonName"
-                                    android:text="" />
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_gravity="right"
+
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_arrival_gate"
+                                        android:layout_gravity="right"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
 
 
 
 
                             </LinearLayout>
-                            <EditText
-                                android:id="@+id/edit_text_airplane_description"
+<!--                            <EditText-->
+<!--                                android:id="@+id/edit_text_airplane_description"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:ems="10"-->
+<!--                                android:hint="Description"-->
+<!--                                android:inputType="textPersonName"-->
+<!--                                android:text="" />-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/outlinedTextFieldDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
                                 android:hint="Description"
-                                android:inputType="textPersonName"
-                                android:text="" />
+                                app:endIconMode="clear_text"
+                                app:endIconDrawable="@drawable/ic_cancel"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_airplane_description"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
                     </LinearLayout>

@@ -49,6 +49,9 @@ public class AirplaneFragment extends Fragment {
     public static final String EXTRA_AirplaneDescription =
             "com.example.tripbuddyv2.EXTRA_AirplaneDescription";
 
+    public static final int EXTRA_Airplane = 1;
+
+
     EditText editTextAirplaneDepartureDateTime;
     EditText editTextDepartureAirplaneAirline;
     EditText editTextDepartureAirplaneFlightNumber;
@@ -124,6 +127,7 @@ public class AirplaneFragment extends Fragment {
         String arrivalArrivingCityOrAirportText= editTextArrivalArrivingCityOrAirport.getText().toString();;
         String arrivalTerminalText= editTextArrivalTerminal.getText().toString();;
         String arrivalGateText= editTextArrivalGate.getText().toString();;
+        String airplaneDescription = editTextAirplaneDescription.getText().toString();
 
         if (airplaneDepartureDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
@@ -142,8 +146,9 @@ public class AirplaneFragment extends Fragment {
         data.putExtra(EXTRA_ArrivalArrivingCityOrAirport,arrivalArrivingCityOrAirportText);
         data.putExtra(EXTRA_ArrivalTerminal,arrivalTerminalText);
         data.putExtra(EXTRA_ArrivalGate,arrivalGateText);
+        data.putExtra(EXTRA_AirplaneDescription,airplaneDescription);
 
-        getActivity().setResult(Activity.RESULT_OK, data);
+        getActivity().setResult(EXTRA_Airplane,data);
         getActivity().finish();
 
 

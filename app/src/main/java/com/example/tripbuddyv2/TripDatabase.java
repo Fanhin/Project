@@ -7,9 +7,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = Trip.class,version = 13 ,exportSchema = false)
+@Database(entities = Trip.class,version = 19 ,exportSchema = false)
+@TypeConverters({UriConverter.class})
 public abstract class TripDatabase extends RoomDatabase  {
 
     private static TripDatabase instance;

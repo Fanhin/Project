@@ -30,6 +30,8 @@ public class BusFragment extends Fragment {
     public static final  String  EXTRA_BusArrivalDateTime="com.example.tripbuddyv2.EXTRA_BusArrivalDateTime";
     public static final  String  EXTRA_BusArrivalAddress="com.example.tripbuddyv2.EXTRA_BusArrivalAddress";
 
+    public static final int EXTRA_Bus = 3;
+
     EditText editTextBusDepartureDateTime;
     EditText editTextBusLicensePlate;
     EditText editTextDepartureBusAddress;
@@ -101,7 +103,7 @@ public class BusFragment extends Fragment {
         busData.putExtra(EXTRA_BusArrivalAddress,busArrivalAddressText);
 
 
-        getActivity().setResult(Activity.RESULT_OK, busData);
+        getActivity().setResult(EXTRA_Bus, busData);
         getActivity().finish();
 
 

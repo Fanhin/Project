@@ -79,17 +79,11 @@ public class LodgingEditActivity extends AppCompatActivity {
 
     private ArrayList<Uri> imageUris;
     private ArrayList<String> imageUrisPath;
-
-    private ArrayList<Uri> imageUris2;
     private ArrayList<String> imageUrisPath2;
-
-
 
     public static final int PICK_IMAGES_LODGING_CODE =0;
 
     int position = 0;
-
-
 
 
     @Override
@@ -201,20 +195,15 @@ public class LodgingEditActivity extends AppCompatActivity {
             editTextLodgingPhone.setText(intent.getStringExtra(EXTRA_LODGING_PHONE));
             editTextLodgingWebsite.setText(intent.getStringExtra(EXTRA_LODGING_WEBSITE));
             editTextLodgingEmail.setText(intent.getStringExtra(EXTRA_LODGING_EMAIL));
-            //imageUrisPath = (ArrayList<String>) intent.getSerializableExtra(EXTRA_LODGING_ARRAY_OF_IMAGE);
-//            imageUrisPath = getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE));
-            Log.e("aaaaa",getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE)).toString());
-            if (!getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE)).isEmpty()){
-                imageUrisPath2 = getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE));
+
+            Log.e("path from edit",getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE)).toString());
+            if (!getIntent().getExtras().getStringArrayList(EXTRA_LODGING_ARRAY_OF_IMAGE).isEmpty()){
+                imageUrisPath2 = getIntent().getExtras().getStringArrayList(EXTRA_LODGING_ARRAY_OF_IMAGE);
                 Log.e("title ",intent.getStringExtra(EXTRA_LODGING_TITLE));
                 Log.e("path on edit lodging",imageUrisPath2.toString());
                 restoreImage(imageUrisPath2);
 
             }
-
-
-
-
         } else {
             setTitle("Add Lodging ");
 

@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<ItemV2> itemV2;
     ArrayList<String> imageUrisLodgingPath;
-    ArrayList<String> imageUrisLodgingPath1;
-    private ArrayList<String> imageUrisActivityPath;
+    ArrayList<String> imageUrisActivityPath;
 
 
 
@@ -188,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_WEBSITE, trip.getLodgingWebsite());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_EMAIL, trip.getLodgingEmail());
                     intentLodging.putStringArrayListExtra(LodgingEditActivity.EXTRA_LODGING_ARRAY_OF_IMAGE,trip.getUriLodgingPath());
-
                     startActivityForResult(intentLodging, EDIT_LODGING);
                 } else if (type == 2){
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_ID, trip.getId());
@@ -202,20 +200,15 @@ public class MainActivity extends AppCompatActivity {
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_WEBSITE,trip.getActivityWebsite());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_EMAIL,trip.getActivityEmail());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_PRIORITY,trip.getActivityPriority());
-                    intentLodging.putExtra(ActivityActivity.EXTRA_ACTIVITY_ARRAY_OF_IMAGE,imageUrisActivityPath);
+                    intentActivity.putStringArrayListExtra(ActivityActivity.EXTRA_ACTIVITY_ARRAY_OF_IMAGE,trip.getUriActivityPath());
                     startActivityForResult(intentActivity, EDIT_ACTIVITY);
-
 
 
                 }
 
-
-
-
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -238,18 +231,18 @@ public class MainActivity extends AppCompatActivity {
             String activityImagePath2 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH2);
             String activityImagePath3 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH3);
 
+            imageUrisActivityPath = data.getExtras().getStringArrayList("strActivityImagePath");
+            Log.e("path edit",imageUrisActivityPath.toString());
+
 
             Trip activity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
-                    activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1,activityImagePath2,activityImagePath3);
+                    activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1
+                    ,activityImagePath2,activityImagePath3,imageUrisActivityPath);
             tripViewModel.insert(activity);
 
-
-
-
-
             Toast.makeText(this, "activity save", Toast.LENGTH_SHORT).show();
-
-        }else if (requestCode == EDIT_ACTIVITY && resultCode == Activity.RESULT_OK) { //edit activity
+            //edit activity
+        }else if (requestCode == EDIT_ACTIVITY && resultCode == Activity.RESULT_OK) {
             //get data from activity
             int id = data.getIntExtra(ActivityActivity.EXTRA_ACTIVITY_ID, -1);
 
@@ -272,19 +265,16 @@ public class MainActivity extends AppCompatActivity {
             String activityImagePath2 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH2);
             String activityImagePath3 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH3);
 
+            imageUrisActivityPath = data.getExtras().getStringArrayList("strActivityImagePath");
+            Log.e("path edit",imageUrisActivityPath.toString());
 
             Trip editActivity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
-                    activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1,activityImagePath2,activityImagePath3);
-            tripViewModel.insert(editActivity);
+                    activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1,
+                    activityImagePath2,activityImagePath3,imageUrisActivityPath);
             editActivity.setId(id);
             tripViewModel.update(editActivity);
 
-            Toast.makeText(this, "lodging updated", Toast.LENGTH_SHORT).show();
-
-
-
-
-            Toast.makeText(this, "activity save", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "activity updated", Toast.LENGTH_SHORT).show();
 
         } else if (requestCode == ADD_TRANSPORTATION_FRAGMENT && resultCode == EXTRA_Airplane   ) {
             //get data from transportation spinner activity
@@ -419,8 +409,6 @@ public class MainActivity extends AppCompatActivity {
             imageUrisLodgingPath = data.getExtras().getStringArrayList("strLodgingImagePath");
             //Log.e("hhhhhhhhh",imageUrisLodgingPath.get(0));
             Log.e("path add",imageUrisLodgingPath.toString());
-
-
 
             Trip lodging = new Trip(0,lodgingTitle, lodgingCheckInDateTime, lodgingCheckOutDateTime,lodgingDescription,
                     lodgingAddress, lodgingPhone, lodgingWebsite, lodgingEmail,lodgingImagePath1,lodgingImagePath2,

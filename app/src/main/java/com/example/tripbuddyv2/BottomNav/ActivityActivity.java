@@ -9,6 +9,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -78,8 +79,7 @@ public class ActivityActivity extends AppCompatActivity {
     private NumberPicker editTextActivityPriority;
 
     private Button buttonSaveActivity;
-    private Button buttonAddImagePath;
-    public static final int PICK_IMAGES_ACTIVITY_CODE =0;
+
    String activityImagePath1;
     String activityImagePath2;
     String activityImagePath3;
@@ -87,18 +87,18 @@ public class ActivityActivity extends AppCompatActivity {
     ImageView imageView2;
     ImageView imageView3;
 
-    TripAdapter argActivityType;
 
     private ImageSwitcher imagesIS;
     private Button previousBtn,nextBtn,pickImagesBtn;
+
     private ArrayList<Uri> imageUris;
     private ArrayList<String> imageUrisPath;
+    private ArrayList<String> imageUrisPath2;
 
+    public static final int PICK_IMAGES_ACTIVITY_CODE =0;
 
 
     int position = 0;
-
-
 
 
 
@@ -112,11 +112,6 @@ public class ActivityActivity extends AppCompatActivity {
         nextBtn = findViewById(R.id.nextActivityBtn);
         pickImagesBtn = findViewById(R.id.pickImagesActivityBtn);
 
-        if(savedInstanceState != null){
-            imageUris = savedInstanceState.getParcelableArrayList("imageUri");
-            position = savedInstanceState.getInt("position");
-
-        }
 
         //init list
         imageUris = new ArrayList<>();
@@ -220,6 +215,18 @@ public class ActivityActivity extends AppCompatActivity {
             editTextActivityEmail .setText(intent.getStringExtra(EXTRA_ACTIVITY_EMAIL));
             editTextActivityPriority.setValue(intent.getIntExtra(EXTRA_ACTIVITY_PRIORITY, 1));
 
+//           if (!getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE).isEmpty()){
+//               imageUrisPath2 = getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE);
+//               restoreImage(imageUrisPath2);
+//           }
+            Log.e("path from edit",getIntent().getExtras().getStringArrayList((EXTRA_ACTIVITY_ARRAY_OF_IMAGE)).toString());
+            if (!getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE).isEmpty()){
+                imageUrisPath2 = getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE);
+                Log.e("title ",intent.getStringExtra(EXTRA_ACTIVITY_TITLE));
+                Log.e("path on edit lodging",imageUrisPath2.toString());
+                restoreImage(imageUrisPath2);
+
+            }
 
 
         } else {
@@ -228,11 +235,34 @@ public class ActivityActivity extends AppCompatActivity {
         }
 
 
+    }
 
+    private void restoreImage(ArrayList<String> imageUrisPath) {
+        if (imageUrisPath != null){
+            //picked multiple images
+            int count = imageUrisPath.size();
+            for (int i=0;i<count;i++){
+                //get image uri at specific index
+                Uri imageUri = Uri.parse(imageUrisPath.get(i));
+                //save uri as str to imageUrisPath
+                //imageUrisPath.add(imageUri.toString());
+                imageUris.add(imageUri);
+            }
+        }
+        else {
 
+            //pick single image
+            Uri imageUri = Uri.parse(imageUrisPath.get(0));
+            //imageUrisPath.add(imageUri.toString());
+            imageUris.add(imageUri);
+            //save uri as str to imageUrisPath
+            //imageUrisPath.add(imageUri.toString());
 
-
-
+        }
+        //set uri to Switch
+        //imagesIS.setImageURI(Uri.parse(imageUrisPath.get(0)));
+        imagesIS.setImageURI(imageUris.get(0));
+        position = 0;
     }
 
     private void pickImageIntent() {
@@ -250,6 +280,13 @@ public class ActivityActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGES_ACTIVITY_CODE){
             if (resultCode == Activity.RESULT_OK){
+                if (imageUrisPath2 != null){
+                    Log.e("image2",imageUrisPath2.toString());
+                    for (int j=0 ; j < imageUrisPath2.size();j++){
+                        imageUrisPath.add(imageUrisPath2.get(j));
+                        imageUris.add(Uri.parse(imageUrisPath.get(j)));
+                    }
+                }
                 if (data.getClipData() != null){
                     //picked multiple images
                     int count = data.getClipData().getItemCount();
@@ -269,9 +306,8 @@ public class ActivityActivity extends AppCompatActivity {
                     imageUris.add(imageUri);
 
                 }
-                //set uri to Switch
-                imagesIS.setImageURI(Uri.parse("content://com.android.providers.media.documents/document/image%3A2448"));
-                //imagesIS.setImageURI(imageUris.get(0));
+                Log.e("data in onAcitivityResu",imageUrisPath.toString());
+                imagesIS.setImageURI(imageUris.get(0));
                 position = 0;
             }
         }
@@ -339,6 +375,7 @@ public class ActivityActivity extends AppCompatActivity {
         activityData.putExtra(EXTRA_ACTIVITY_IMAGE_PATH1,activityImagePath1);
         activityData.putExtra(EXTRA_ACTIVITY_IMAGE_PATH2,activityImagePath2);
         activityData.putExtra(EXTRA_ACTIVITY_IMAGE_PATH3,activityImagePath3);
+        activityData.putStringArrayListExtra("strActivityImagePath",imageUrisPath);
 
         int id = getIntent().getIntExtra(EXTRA_ACTIVITY_ID,-1);
         if (id != -1){

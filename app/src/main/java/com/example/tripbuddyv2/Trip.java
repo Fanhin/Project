@@ -222,14 +222,21 @@ public class Trip {
     private  String activityImage1;
     private  String activityImage2;
     private  String activityImage3;
+    private ArrayList<String> uriActivityPath;
 
+    public ArrayList<String> getUriActivityPath() {
+        return uriActivityPath;
+    }
 
-
+    public void setUriActivityPath(ArrayList<String> uriActivityPath) {
+        this.uriActivityPath = uriActivityPath;
+    }
     //constructor for activity
 
     public Trip(int type,String activityTitle, String activityDestination, String activityDescription,
                 String activityStartDateTime, String activityEndDateTime, String activityAddress,
-                String activityPhone, String activityWebsite, String activityEmail, int activityPriority,String activityImage1,String activityImage2,String activityImage3) {
+                String activityPhone, String activityWebsite, String activityEmail, int activityPriority
+            ,String activityImage1,String activityImage2,String activityImage3,ArrayList<String> uriActivityPath) {
         this.type = type;
         this.activityTitle = activityTitle;
         this.activityDestination = activityDestination;
@@ -244,6 +251,7 @@ public class Trip {
         this.activityImage1 = activityImage1;
         this.activityImage2 = activityImage2;
         this.activityImage3 = activityImage3;
+        this.uriActivityPath = uriActivityPath;
     }
 
     private int type;

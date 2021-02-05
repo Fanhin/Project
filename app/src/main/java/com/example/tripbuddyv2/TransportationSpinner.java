@@ -99,6 +99,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_transportation_spinner);
 
         spinner = findViewById(R.id.spinner);
+        setTitle("Add Transportation ");
 
 
         airplaneFragment = new AirplaneFragment();
@@ -106,6 +107,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
         busFragment = new BusFragment();
         boatFragment = new BoatFragment();
         carRentalFragment = new CarRentalFragment();
+
 
 
 

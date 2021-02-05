@@ -4,8 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -175,6 +178,8 @@ public class ActivityActivity extends AppCompatActivity {
         editTextActivityWebsite= findViewById(R.id.edit_text_activity_website);
         editTextActivityEmail= findViewById(R.id.edit_text_activity_email);
         editTextActivityPriority = findViewById(R.id.edit_text_activity_number_picker_priority);
+        editTextActivityPriority.setMinValue(1);
+        editTextActivityPriority.setMaxValue(10);
         buttonSaveActivity = findViewById(R.id.activity_save_button);
 
 
@@ -327,10 +332,12 @@ public class ActivityActivity extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
+                        calendar.set(Calendar.SECOND,0);
 
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
                         date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+                        startAlarm(calendar);
                     }
                 };
 
@@ -340,6 +347,15 @@ public class ActivityActivity extends AppCompatActivity {
 
         new DatePickerDialog(ActivityActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
 
+    }
+
+    private void startAlarm(Calendar calendar) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
     }
 
     private void saveActivity() {

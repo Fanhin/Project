@@ -1,13 +1,19 @@
 package com.example.tripbuddyv2.BottomNav;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -172,6 +178,7 @@ public class LodgingEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showDateTimeDialog(editTextLodgingCheckInDateTime);
+
             }
         });
 
@@ -182,8 +189,10 @@ public class LodgingEditActivity extends AppCompatActivity {
             }
         });
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
+
         Intent intent = getIntent();
         if (intent.hasExtra(EXTRA_LODGING_ID)) {
             setTitle("Edit Lodging");
@@ -309,10 +318,14 @@ public class LodgingEditActivity extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
+                        calendar.set(Calendar.SECOND,0);
 
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
+
                         date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+                        startAlarm(calendar);
+                        Log.e("date time",calendar.getTime().toString());
                     }
                 };
 
@@ -321,6 +334,17 @@ public class LodgingEditActivity extends AppCompatActivity {
         };
 
         new DatePickerDialog(LodgingEditActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+    }
+
+    public void startAlarm(Calendar calendar){
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
 
     }
 
@@ -358,6 +382,7 @@ public class LodgingEditActivity extends AppCompatActivity {
 
 
 
+
         int id = getIntent().getIntExtra(EXTRA_LODGING_ID,-1);
         if (id != -1){
             lodgingData.putExtra(EXTRA_LODGING_ID,id);
@@ -368,5 +393,15 @@ public class LodgingEditActivity extends AppCompatActivity {
         setResult(RESULT_OK, lodgingData);
         finish();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+
 
 }

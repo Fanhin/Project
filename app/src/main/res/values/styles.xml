@@ -3,9 +3,10 @@
     <!-- <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">-->
     <style name="Theme.App" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">#3F51B5</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
 
 
     </style>
@@ -13,5 +14,9 @@
     <style name="Widget.MyApp.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">?attr/colorPrimary</item>
     </style>
+
+
+
+
 
 </resources>

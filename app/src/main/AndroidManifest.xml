@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
-        <activity android:name=".BottomNav.ActivityActivity" />
-        <activity android:name=".BottomNav.LodgingEditActivity" />
+        <activity android:name=".BottomNav.ActivityActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".BottomNav.LodgingEditActivity" android:parentActivityName=".MainActivity" />
         <activity android:name=".BottomNav.TransportationActivity" />
         <activity android:name=".Tab.TabActivity"/>
-        <activity android:name=".TransportationSpinner"/>
-
+        <activity android:name=".TransportationSpinner"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AddTripActivity"
             android:parentActivityName=".MainActivity" />
@@ -27,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".BottomNav.AlertReceiver"/>
     </application>
 
 </manifest>

@@ -9,8 +9,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -68,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
+
         FloatingActionButton buttonAddTransportation = findViewById(R.id.button_add_transportation);
 
         buttonAddTransportation.setOnClickListener(new View.OnClickListener() {
@@ -90,18 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 + " \n versionRelease " + versionRelease
         );
 
-
-//        FloatingActionButton testBtn =findViewById(R.id.testBtn);
-//        testBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                Intent intent1 = new Intent(MainActivity.this, TransportationActivity.class);
-//                startActivityForResult(intent1, ADD_TRANSPORTATION);
-//
-//            }
-//        });
 
         FloatingActionButton buttonAddLodging = findViewById(R.id.button_add_lodging);
         buttonAddLodging.setOnClickListener(new View.OnClickListener() {
@@ -165,9 +161,28 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                tripViewModel.delete(adapter.getTripAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this, "Trip deleted", Toast.LENGTH_SHORT).show();
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
+                new AlertDialog.Builder(viewHolder.itemView.getContext())
+                        .setMessage("Are you sure ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                tripViewModel.delete(adapter.getTripAt(viewHolder.getAdapterPosition()));
+                                Toast.makeText(MainActivity.this, "Trip deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                            }
+                        })
+                        .create()
+                        .show();
+
+                //tripViewModel.delete(adapter.getTripAt(viewHolder.getAdapterPosition()));
+
+
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -313,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
             String trainClassText = data.getStringExtra(TransportationSpinner.EXTRA_TrainClass);
             String trainSeatsText = data.getStringExtra(TransportationSpinner.EXTRA_TrainSeats);
 
-            Trip trainTransportation = new Trip(2,trainDepartureDateTimeText, departureTrainStationText, departureTrainAddressText,
+            Trip trainTransportation = new Trip(3,trainDepartureDateTimeText, departureTrainStationText, departureTrainAddressText,
                     trainArrivalDateTimeText, trainArrivalStationText, trainTypeText, trainNumberText,trainCoachText, trainClassText, trainSeatsText);
 
             tripViewModel.insert(trainTransportation);
@@ -329,7 +344,7 @@ public class MainActivity extends AppCompatActivity {
             String busArrivalDateTimeText = data.getStringExtra(TransportationSpinner.EXTRA_BusArrivalDateTime);
             String busArrivalAddressText = data.getStringExtra(TransportationSpinner.EXTRA_BusArrivalAddress);
 
-            Trip busTransportation = new Trip(2,busDepartureDateTimeText, busLicensePlateText, departureBusAddressText,
+            Trip busTransportation = new Trip(4,busDepartureDateTimeText, busLicensePlateText, departureBusAddressText,
                     busArrivalDateTimeText, busArrivalAddressText);
 
 
@@ -354,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
             String boatDescriptionText = data.getStringExtra(TransportationSpinner.EXTRA_BoatDescription);
             String boatPhoneText = data.getStringExtra(TransportationSpinner.EXTRA_BoatPhone);
 
-            Trip boatTransportation = new Trip(2,boatDepartureDateTimeText, boatNameText, departureBoatLocationText,
+            Trip boatTransportation = new Trip(5,boatDepartureDateTimeText, boatNameText, departureBoatLocationText,
                     departureBoatAddressText, boatArrivalDateTimeText, arrivalBoatLocationText, arrivalBoatAddressText,
                     portNameText, portAddressText, cabinTypeText, cabinNumberText, boatDescriptionText,boatPhoneText);
 
@@ -380,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
             String carRentalConfirmationText = data.getStringExtra(TransportationSpinner.EXTRA_CarRentalConfirmation);
 
 
-            Trip carRentalTransportation = new Trip(2,rentalAgencyText, pickupDateTimeText, pickupLocationText,
+            Trip carRentalTransportation = new Trip(6,rentalAgencyText, pickupDateTimeText, pickupLocationText,
                     carRentalPickupAddressText, carRentalPhoneText, dropOffDateTimeText, dropOffLocationText,
                     dropOffAddressText, carRentalWebsiteText, carRentalEmailText, carRentalDescriptionText,
                     carRentalConfirmationText);

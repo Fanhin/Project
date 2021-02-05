@@ -10,13 +10,19 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = Trip.class,version = 20 ,exportSchema = false)
+import com.example.tripbuddyv2.ListTrips.ListTrips;
+import com.example.tripbuddyv2.ListTrips.ListTripsDao;
+
+import java.util.ArrayList;
+
+@Database(entities = {Trip.class, ListTrips.class},version = 24 )
 @TypeConverters({UriConverter.class})
 public abstract class TripDatabase extends RoomDatabase  {
 
     private static TripDatabase instance;
 
     public abstract TripDao tripDao();
+    public abstract ListTripsDao listTripsDao();
 
     public static synchronized TripDatabase getInstance(Context context){
         if (instance == null){
@@ -39,15 +45,20 @@ public abstract class TripDatabase extends RoomDatabase  {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void,Void>{
         private TripDao tripDao;
+        private ListTripsDao listTripsDao;
 
         private PopulateDbAsyncTask(TripDatabase db) {
 
             tripDao = db.tripDao();
+            listTripsDao =db.listTripsDao();
         }
 
 
         @Override
         protected Void doInBackground(Void... voids) {
+
+
+
 
             return null;
         }

@@ -331,7 +331,7 @@
                             <NumberPicker
                                 android:id="@+id/edit_text_activity_number_picker_priority"
                                 android:layout_width="wrap_content"
-                                android:layout_height="100dp"
+                                android:layout_height="110dp"
 
                                 />
 

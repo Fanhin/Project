@@ -13,7 +13,7 @@
         tools:listitem="@layout/list_trips_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_add_transportation"
+        android:id="@+id/button_add_trip_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"

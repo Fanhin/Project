@@ -9,12 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripbuddyv2.R;
+import com.example.tripbuddyv2.Trip;
+import com.example.tripbuddyv2.TripAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListTripsAdapter extends RecyclerView.Adapter<ListTripsAdapter.ListTripsHolder> {
     private List<ListTrips> listTrips = new ArrayList<>();
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -33,6 +36,13 @@ public class ListTripsAdapter extends RecyclerView.Adapter<ListTripsAdapter.List
         holder.textViewDescription.setText(currentListTrips.getDescription());
 
     }
+    public ListTrips getListTripsAt(int position) {
+        return listTrips.get(position);
+    }
+
+
+
+
 
     @Override
     public int getItemCount() {
@@ -56,7 +66,30 @@ public class ListTripsAdapter extends RecyclerView.Adapter<ListTripsAdapter.List
             textViewStartDate = itemView.findViewById(R.id.text_view_start_date);
             textViewEndDate = itemView.findViewById(R.id.text_view_end_date);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(listTrips.get(position));
+                    }
+                }
+            });
         }
+
+
+
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(ListTrips listTrips);
+
+
+    }
+
+    public void setOnItemClickListener(ListTripsAdapter.OnItemClickListener listener) {
+        this.listener = listener;
     }
 
 

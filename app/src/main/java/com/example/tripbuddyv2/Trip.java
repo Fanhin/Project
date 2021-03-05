@@ -1,9 +1,12 @@
 package com.example.tripbuddyv2;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
+
+import com.example.tripbuddyv2.ListTrips.ListTrips;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,8 +16,24 @@ import java.util.List;
 public class Trip {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int idTrip;
 
+    @ForeignKey(
+            entity = ListTrips.class,
+            parentColumns = "id_ListTrips",
+            childColumns = "id_fkListTrips",
+            onUpdate = ForeignKey.CASCADE,
+            onDelete = ForeignKey.CASCADE
+    )
+    private long id_fkListTrips;
+
+    public long getId_fkListTrips() {
+        return id_fkListTrips;
+    }
+
+    public void setId_fkListTrips(long id_fkListTrips) {
+        this.id_fkListTrips = id_fkListTrips;
+    }
 
     //airplane transportation
     private String airplaneDepartureDateTime;
@@ -268,12 +287,12 @@ public class Trip {
 
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdTrip(int id) {
+        this.idTrip = id;
     }
 
-    public int getId() {
-        return id;
+    public int getIdTrip() {
+        return idTrip;
     }
 
 

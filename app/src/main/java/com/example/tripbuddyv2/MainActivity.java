@@ -30,6 +30,9 @@ import com.example.tripbuddyv2.Adapter.TripAdapterV2;
 import com.example.tripbuddyv2.BottomNav.ActivityActivity;
 import com.example.tripbuddyv2.BottomNav.LodgingEditActivity;
 import com.example.tripbuddyv2.BottomNav.TransportationActivity;
+import com.example.tripbuddyv2.ListTrips.ListTrips;
+import com.example.tripbuddyv2.ListTrips.ListTripsViewModel;
+import com.example.tripbuddyv2.ListTrips.ListTripsWithTrip;
 import com.example.tripbuddyv2.Models.ActivityEvent;
 import com.example.tripbuddyv2.Models.Item;
 import com.example.tripbuddyv2.Models.Lodging;
@@ -59,10 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TripViewModel tripViewModel;
+    private ListTripsViewModel listTripsViewModel;
 
     List<ItemV2> itemV2;
     ArrayList<String> imageUrisLodgingPath;
     ArrayList<String> imageUrisActivityPath;
+    long idFk;
 
 
 
@@ -71,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        idFk = intent.getIntExtra("idListTrip",-1);
+
+
+
+
 
 
 
@@ -192,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentLodging = new Intent(MainActivity.this, LodgingEditActivity.class);
                 Intent intentActivity = new Intent(MainActivity.this, ActivityActivity.class);
                 if (type == 1){
-                    intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_ID, trip.getId());
+                    intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_ID, trip.getIdTrip());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_TITLE, trip.getLodgingTitle());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_DESCRIPTION,trip.getLodgingDescription());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_CHECK_IN_DATE_TIME, trip.getLodgingCheckInDateTime());
@@ -204,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                     intentLodging.putStringArrayListExtra(LodgingEditActivity.EXTRA_LODGING_ARRAY_OF_IMAGE,trip.getUriLodgingPath());
                     startActivityForResult(intentLodging, EDIT_LODGING);
                 } else if (type == 2){
-                    intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_ID, trip.getId());
+                    intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_ID, trip.getIdTrip());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_TITLE,trip.getActivityTitle());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_DESTINATION,trip.getActivityDestination());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_DESCRIPTION,trip.getActivityDescription());
@@ -253,6 +264,8 @@ public class MainActivity extends AppCompatActivity {
             Trip activity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
                     activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1
                     ,activityImagePath2,activityImagePath3,imageUrisActivityPath);
+            activity.setId_fkListTrips(idFk);
+
             tripViewModel.insert(activity);
 
             Toast.makeText(this, "activity save", Toast.LENGTH_SHORT).show();
@@ -286,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
             Trip editActivity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
                     activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1,
                     activityImagePath2,activityImagePath3,imageUrisActivityPath);
-            editActivity.setId(id);
+            editActivity.setIdTrip(id);
             tripViewModel.update(editActivity);
 
             Toast.makeText(this, "activity updated", Toast.LENGTH_SHORT).show();
@@ -459,7 +472,7 @@ public class MainActivity extends AppCompatActivity {
             Trip editLodging = new Trip(0,lodgingTitle, lodgingCheckInDateTime, lodgingCheckOutDateTime
                     ,lodgingDescription, lodgingAddress, lodgingPhone, lodgingWebsite, lodgingEmail,lodgingImagePath1,
                     lodgingImagePath2,lodgingImagePath3,imageUrisLodgingPath);
-            editLodging.setId(id);
+            editLodging.setIdTrip(id);
             tripViewModel.update(editLodging);
 
             Toast.makeText(this, "lodging updated", Toast.LENGTH_SHORT).show();

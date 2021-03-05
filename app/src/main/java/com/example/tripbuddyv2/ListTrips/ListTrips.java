@@ -1,13 +1,18 @@
 package com.example.tripbuddyv2.ListTrips;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "list_trips_table")
-public class ListTrips {
+import com.example.tripbuddyv2.Trip;
 
+@Entity(tableName = "list_trips_table")
+@ForeignKey(entity = Trip.class,parentColumns = "idTripsList",childColumns = "id")
+
+public class ListTrips {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int idListTrips;
+
 
     private String title;
     private String startDate;
@@ -15,18 +20,26 @@ public class ListTrips {
     private String description;
 
     public ListTrips(String title, String startDate,String endDate,String description) {
-       this.title = title;
-       this.startDate = startDate;
-       this.endDate = endDate;
-       this.description = description;
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
+    }
+
+    public int getIdListTrips() {
+        return idListTrips;
+    }
+
+    public void setIdListTrips(int idTripsList) {
+        this.idListTrips = idTripsList;
     }
 
     public int getId() {
-        return id;
+        return idListTrips;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idTripsList) {
+        this.idListTrips = idTripsList;
     }
 
     public String getTitle() {

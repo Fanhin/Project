@@ -6,35 +6,40 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.tripbuddyv2.Trip;
+import com.example.tripbuddyv2.TripRepository;
+
 import java.util.List;
 
 public class ListTripsViewModel extends AndroidViewModel {
 
-    private ListTripsRepository repository;
+    private ListTripsRepository listTripsRepository;
     private LiveData<List<ListTrips>> allListTrips;
 
     public ListTripsViewModel(@NonNull Application application) {
         super(application);
-        repository = new ListTripsRepository(application);
-        allListTrips = repository.getAllListTrips();
+
+        listTripsRepository = new ListTripsRepository(application);
+        allListTrips = listTripsRepository.getAllListTrips();
     }
 
-    public void insert(ListTrips listTrips){
-        repository.insert(listTrips);
+    public void insertListTripWithTrip(ListTripsWithTrip listTripsWithTrip){
+        listTripsRepository.insert(listTripsWithTrip);
     }
 
-    public void update(ListTrips listTrips){
-        repository.update(listTrips);
+    public void  update(ListTrips listTrips){
+        listTripsRepository.update(listTrips);
     }
 
     public void delete(ListTrips listTrips){
-        repository.delete(listTrips);
-    }
-    public void deleteAllListTrips(){
-        repository.deleteAllListTrips();
+        listTripsRepository.delete(listTrips);
     }
 
-    public LiveData<List<ListTrips>> getAllListTrips(){
+    public void deleteAllTrips(){
+        listTripsRepository.deleteAllTrips();
+    }
+
+    public LiveData<List<ListTrips>> getAllListTrips() {
         return allListTrips;
     }
 }

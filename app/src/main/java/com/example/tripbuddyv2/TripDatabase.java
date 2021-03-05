@@ -13,9 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.tripbuddyv2.ListTrips.ListTrips;
 import com.example.tripbuddyv2.ListTrips.ListTripsDao;
 
-import java.util.ArrayList;
-
-@Database(entities = {Trip.class, ListTrips.class},version = 24 )
+@Database(entities = {Trip.class, ListTrips.class},version = 32 )
 @TypeConverters({UriConverter.class})
 public abstract class TripDatabase extends RoomDatabase  {
 
@@ -23,6 +21,7 @@ public abstract class TripDatabase extends RoomDatabase  {
 
     public abstract TripDao tripDao();
     public abstract ListTripsDao listTripsDao();
+
 
     public static synchronized TripDatabase getInstance(Context context){
         if (instance == null){
@@ -47,10 +46,12 @@ public abstract class TripDatabase extends RoomDatabase  {
         private TripDao tripDao;
         private ListTripsDao listTripsDao;
 
+
         private PopulateDbAsyncTask(TripDatabase db) {
 
             tripDao = db.tripDao();
-            listTripsDao =db.listTripsDao();
+            listTripsDao = db.listTripsDao();
+
         }
 
 

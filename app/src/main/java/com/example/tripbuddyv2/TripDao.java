@@ -6,7 +6,10 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
+
+import com.example.tripbuddyv2.ListTrips.ListTrips;
 
 import java.util.List;
 
@@ -27,4 +30,5 @@ public interface TripDao {
 
     @Query("SELECT * FROM trip_table ORDER BY COALESCE(activityStartDateTime,lodgingCheckInDateTime,airplaneDepartureDateTime,trainDepartureDateTime,busDepartureDateTime,boatDepartureDateTime,pickupDateTime)  ASC")
     LiveData<List<Trip>> getAllTrips();
+
 }

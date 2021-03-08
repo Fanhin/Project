@@ -28,7 +28,10 @@ public interface TripDao {
     @Query("DELETE FROM trip_table")
     void deleteAllTrips();
 
-    @Query("SELECT * FROM trip_table ORDER BY COALESCE(activityStartDateTime,lodgingCheckInDateTime,airplaneDepartureDateTime,trainDepartureDateTime,busDepartureDateTime,boatDepartureDateTime,pickupDateTime)  ASC")
+    @Query("SELECT * FROM trip_table  ORDER BY COALESCE(activityStartDateTime,lodgingCheckInDateTime,airplaneDepartureDateTime,trainDepartureDateTime,busDepartureDateTime,boatDepartureDateTime,pickupDateTime)  ASC")
     LiveData<List<Trip>> getAllTrips();
+
+    @Query("SELECT * FROM trip_table WHERE id_fkListTrips=:idFk ORDER BY COALESCE(activityStartDateTime,lodgingCheckInDateTime,airplaneDepartureDateTime,trainDepartureDateTime,busDepartureDateTime,boatDepartureDateTime,pickupDateTime)  ASC")
+    LiveData<List<Trip>> getTripWithIdFK(long idFk);
 
 }

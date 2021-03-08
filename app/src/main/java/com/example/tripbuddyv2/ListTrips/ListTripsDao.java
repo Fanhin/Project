@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
@@ -19,9 +18,6 @@ public interface ListTripsDao {
     @Insert
     long insertListTrips(ListTrips listTrips);
 
-    @Insert
-    void insertTrip(List<Trip> trips);
-
     @Update
     void update(ListTrips listTrips);
 
@@ -31,7 +27,12 @@ public interface ListTripsDao {
     @Query("DELETE FROM list_trips_table")
     void deleteAllListTrips();
 
+
     @Query("SELECT * FROM list_trips_table  ORDER BY idListTrips ASC")
     LiveData<List<ListTrips>> getAllListTrips();
+
+    @Query("SELECT * FROM trip_table WHERE id_fkListTrips = :id LIMIT 1")
+    LiveData<List<Trip>> getTripsByIdFK(long id);
+
 
 }

@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.tripbuddyv2.ListTrips.ListTrips;
 import com.example.tripbuddyv2.ListTrips.ListTripsDao;
 
-@Database(entities = {Trip.class, ListTrips.class},version = 32 )
+@Database(entities = {Trip.class, ListTrips.class},version = 33 )
 @TypeConverters({UriConverter.class})
 public abstract class TripDatabase extends RoomDatabase  {
 

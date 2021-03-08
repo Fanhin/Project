@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.example.tripbuddyv2.MainActivity;
 import com.example.tripbuddyv2.R;
 import com.example.tripbuddyv2.Trip;
 import com.example.tripbuddyv2.TripAdapter;
+import com.example.tripbuddyv2.TripDatabase;
 import com.example.tripbuddyv2.TripViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -54,11 +56,12 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
         final ListTripsAdapter listTripsAdapter = new ListTripsAdapter();
         recyclerView.setAdapter(listTripsAdapter);
 
+
         listTripsViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(ListTripsViewModel.class);
         listTripsViewModel.getAllListTrips().observe(this, new Observer<List<ListTrips>>() {
             @Override
             public void onChanged(List<ListTrips> listTrips) {
-                //update recyclerview
+
                 listTripsAdapter.setListTrips(listTrips);
                 Toast.makeText(ListTripActivity.this, "OnChange", Toast.LENGTH_SHORT).show();
 
@@ -106,6 +109,7 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
             public void onItemClick(ListTrips listTrips) {
                 Intent intentTripTimeline = new Intent(ListTripActivity.this, MainActivity.class);
                 intentTripTimeline.putExtra("idListTrip",listTrips.getIdListTrips());
+                Log.e("Id List Trip",String.valueOf(listTrips.getIdListTrips()));
                 startActivityForResult(intentTripTimeline, LISTTRIP);
             }
 
@@ -125,10 +129,10 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
     public void applyTexts(String tripsName, String tripsStartDate, String tripsEndDate, String tripsDescription) {
 
         ListTrips listTrips = new ListTrips(tripsName,tripsStartDate,tripsEndDate,tripsDescription);
-        ListTripsWithTrip listTripsWithTrip = new ListTripsWithTrip(new ListTrips(tripsName,tripsStartDate,tripsEndDate,tripsDescription),trips);
+        //ListTripsWithTrip listTripsWithTrip = new ListTripsWithTrip(new ListTrips(tripsName,tripsStartDate,tripsEndDate,tripsDescription),trips);
+        //listTripsViewModel.insertListTripWithTrip(listTripsWithTrip);
 
-
-        listTripsViewModel.insertListTripWithTrip(listTripsWithTrip);
+        listTripsViewModel.insertListTrip(listTrips);
        
 
     }

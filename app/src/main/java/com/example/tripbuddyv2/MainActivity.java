@@ -9,13 +9,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,21 +22,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.tripbuddyv2.Adapter.AdapterV3;
-import com.example.tripbuddyv2.Adapter.TripAdapterV2;
 import com.example.tripbuddyv2.BottomNav.ActivityActivity;
 import com.example.tripbuddyv2.BottomNav.LodgingEditActivity;
-import com.example.tripbuddyv2.BottomNav.TransportationActivity;
-import com.example.tripbuddyv2.ListTrips.ListTrips;
 import com.example.tripbuddyv2.ListTrips.ListTripsViewModel;
-import com.example.tripbuddyv2.ListTrips.ListTripsWithTrip;
 import com.example.tripbuddyv2.Models.ActivityEvent;
 import com.example.tripbuddyv2.Models.Item;
 import com.example.tripbuddyv2.Models.Lodging;
 import com.example.tripbuddyv2.Models.Transportation;
-import com.example.tripbuddyv2.ModelsV2.ActivityObj;
 import com.example.tripbuddyv2.ModelsV2.ItemV2;
-import com.example.tripbuddyv2.ModelsV2.LodgingObj;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -70,21 +60,13 @@ public class MainActivity extends AppCompatActivity {
     long idFk;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         idFk = intent.getIntExtra("idListTrip",-1);
-
-
-
-
-
-
-
+        Log.e("Id Frome List Trip",String.valueOf(idFk));
 
 
         FloatingActionButton buttonAddTransportation = findViewById(R.id.button_add_transportation);
@@ -155,12 +137,14 @@ public class MainActivity extends AppCompatActivity {
         //adapter
         recyclerView.setAdapter(adapter);
         tripViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TripViewModel.class);
-        tripViewModel.getAllTrips().observe(this, new Observer<List<Trip>>() {
+        tripViewModel.getAllTripsWithIdFK(idFk).observe(this, new Observer<List<Trip>>() {
             @Override
             public void onChanged(@Nullable List<Trip> trips) {
                 adapter.setTrips(trips);
             }
         });
+
+
 
 
         //slide to delete one trip

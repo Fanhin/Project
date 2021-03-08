@@ -8,26 +8,34 @@ import androidx.lifecycle.LiveData;
 import com.example.tripbuddyv2.Trip;
 import com.example.tripbuddyv2.TripDao;
 import com.example.tripbuddyv2.TripDatabase;
-import com.example.tripbuddyv2.TripRepository;
 
 import java.util.List;
 
 public class ListTripsRepository {
 
+    static ListTripsRepository instance;
     private ListTripsDao listTripsDao;
+    private TripDao tripDao;
     private LiveData<List<ListTrips>> allListTrips;
+    private LiveData<List<Trip>> allTrips;
+
+
 
     public ListTripsRepository(Application application){
         TripDatabase database = TripDatabase.getInstance(application);
         listTripsDao = database.listTripsDao();
         allListTrips = listTripsDao.getAllListTrips();
 
+
+
     }
 
-    public void insert(ListTripsWithTrip listTripsWithTrip){
+    public void insert(ListTrips listTrips){
 
-        new InsertTripAsyncTask(listTripsDao).execute(listTripsWithTrip);
+        new InsertListTripAsyncTask(listTripsDao).execute(listTrips);
     }
+
+
 
     public void update(ListTrips listTrips){
 
@@ -49,22 +57,26 @@ public class ListTripsRepository {
         return allListTrips;
     }
 
+    public LiveData<List<Trip>> getTripsWithIdFK(long idFk) {
+        return listTripsDao.getTripsByIdFK(idFk);
+    }
 
-    private static class InsertTripAsyncTask extends AsyncTask<ListTripsWithTrip,Void,Void> {
+
+
+
+
+    private static class InsertListTripAsyncTask extends AsyncTask<ListTrips,Void,Void> {
         private ListTripsDao listTripsDao;
 
-        private InsertTripAsyncTask(ListTripsDao listTripsDao){
+        private InsertListTripAsyncTask(ListTripsDao listTripsDao){
 
             this.listTripsDao = listTripsDao;
         }
 
         @Override
-        protected Void doInBackground(ListTripsWithTrip... listTripsWithTrips) {
-            long identifier = listTripsDao.insertListTrips(listTripsWithTrips[0].listTrips);
+        protected Void doInBackground(ListTrips... listTrips) {
 
-            for (Trip trip : listTripsWithTrips[0].trips){
-                trip.setId_fkListTrips(identifier);
-            }
+            listTripsDao.insertListTrips(listTrips[0]);
             return null;
         }
     }

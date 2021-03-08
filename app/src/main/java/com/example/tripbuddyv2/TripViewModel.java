@@ -38,4 +38,12 @@ public class TripViewModel extends AndroidViewModel {
     public LiveData<List<Trip>> getAllTrips() {
         return allTrips;
     }
+
+    public LiveData<List<Trip>> getAllTripsWithIdFK(long idFk) {
+       return repository.getTripsWithIdFK(idFk);
+    }
+
+
+
+
 }

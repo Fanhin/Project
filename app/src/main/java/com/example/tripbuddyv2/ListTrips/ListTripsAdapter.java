@@ -40,10 +40,6 @@ public class ListTripsAdapter extends RecyclerView.Adapter<ListTripsAdapter.List
         return listTrips.get(position);
     }
 
-
-
-
-
     @Override
     public int getItemCount() {
         return listTrips.size();

@@ -35,6 +35,16 @@ public class Trip {
         this.id_fkListTrips = id_fkListTrips;
     }
 
+    private int cost;
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
     //airplane transportation
     private String airplaneDepartureDateTime;
     private String departureAirplaneAirline;
@@ -53,7 +63,7 @@ public class Trip {
     public Trip(int type,String airplaneDepartureDateTime, String departureAirplaneAirline, String departureAirplaneFlightNumber,
                 String departureAirplaneSeats, String departureAirplaneTerminal, String departureAirplaneGate,
                 String airplaneArrivalDateTime, String arrivalArrivingCityOrAirport, String arrivalTerminal,
-                String arrivalGate,String airplaneDescription) {
+                String arrivalGate,String airplaneDescription,int cost) {
         this.type = type;
         this.airplaneDepartureDateTime = airplaneDepartureDateTime;
         this.departureAirplaneAirline = departureAirplaneAirline;
@@ -66,6 +76,7 @@ public class Trip {
         this.arrivalTerminal = arrivalTerminal;
         this.arrivalGate = arrivalGate;
         this.airplaneDescription = airplaneDescription;
+        this.cost = cost;
 
 
     }
@@ -86,7 +97,7 @@ public class Trip {
     //constructor for train
 
     public Trip(int type,String trainDepartureDateTime, String departureTrainStation, String departureTrainAddress, String trainArrivalDateTime,String trainArrivalStation,
-                String trainType, String trainNumber,String trainCoach, String trainClass, String trainSeats) {
+                String trainType, String trainNumber,String trainCoach, String trainClass, String trainSeats,int cost) {
         this.type = type;
         this.trainDepartureDateTime = trainDepartureDateTime;
         this.departureTrainStation = departureTrainStation;
@@ -98,6 +109,7 @@ public class Trip {
         this.trainCoach = trainCoach;
         this.trainClass = trainClass;
         this.trainSeats = trainSeats;
+        this.cost = cost;
     }
 
     //Bus transportation
@@ -109,13 +121,14 @@ public class Trip {
 
     //constructor for Bus
 
-    public Trip(int type,String busDepartureDateTime, String busLicensePlate, String departureBusAddress, String busArrivalDateTime, String busArrivalAddress) {
+    public Trip(int type,String busDepartureDateTime, String busLicensePlate, String departureBusAddress, String busArrivalDateTime, String busArrivalAddress,int cost) {
         this.type = type;
         this.busDepartureDateTime = busDepartureDateTime;
         this.busLicensePlate = busLicensePlate;
         this.departureBusAddress = departureBusAddress;
         this.busArrivalDateTime = busArrivalDateTime;
         this.busArrivalAddress = busArrivalAddress;
+        this.cost = cost;
     }
 
     //Boat transportation
@@ -135,7 +148,7 @@ public class Trip {
 
     public Trip(int type,String boatDepartureDateTime, String boatName, String departureBoatLocation, String departureBoatAddress,
                 String boatArrivalDateTime, String arrivalBoatLocation, String arrivalBoatAddress, String portName, String portAddress,
-                String cabinType, String cabinNumber, String boatDescription ,String boatPhone) {
+                String cabinType, String cabinNumber, String boatDescription ,String boatPhone,int cost) {
         this.type = type;
         this.boatDepartureDateTime = boatDepartureDateTime;
         this.boatName = boatName;
@@ -150,6 +163,7 @@ public class Trip {
         this.cabinNumber = cabinNumber;
         this.boatDescription = boatDescription;
         this.boatPhone = boatPhone;
+        this.cost = cost;
     }
 
     //Car rental transportation
@@ -169,7 +183,7 @@ public class Trip {
 
     public Trip(int type,String rentalAgency, String pickupDateTime, String pickupLocation, String carRentalPickupAddress,
                 String carRentalPhone, String dropOffDateTime, String dropOffLocation, String dropOffAddress,
-                String carRentalWebsite, String carRentalEmail,String carRentalDescription,String carRentalConfirmation) {
+                String carRentalWebsite, String carRentalEmail,String carRentalDescription,String carRentalConfirmation,int cost) {
         this.type = type;
         this.rentalAgency = rentalAgency;
         this.pickupDateTime = pickupDateTime;
@@ -183,6 +197,7 @@ public class Trip {
         this.carRentalEmail = carRentalEmail;
         this.carRentalDescription = carRentalDescription;
         this.carRentalConfirmation = carRentalConfirmation;
+        this.cost = cost;
     }
 
     //lodging 9*
@@ -211,7 +226,7 @@ public class Trip {
 
     public Trip(int type, String lodgingTitle, String lodgingCheckInDateTime, String lodgingCheckOutDateTime,
                 String lodgingDescription, String lodgingAddress, String lodgingPhone, String lodgingWebsite, String lodgingEmail
-            , String lodgingImage1, String lodgingImage2, String lodgingImage3, ArrayList<String> uriLodgingPath) {
+            , String lodgingImage1, String lodgingImage2, String lodgingImage3, ArrayList<String> uriLodgingPath,int cost) {
         this.type = type;
         this.lodgingTitle = lodgingTitle;
         this.lodgingCheckInDateTime = lodgingCheckInDateTime;
@@ -225,6 +240,7 @@ public class Trip {
         this.lodgingImage2 = lodgingImage2;
         this.lodgingImage3 = lodgingImage3;
         this.uriLodgingPath = uriLodgingPath;
+        this.cost = cost;
     }
 
     //activity
@@ -255,7 +271,7 @@ public class Trip {
     public Trip(int type,String activityTitle, String activityDestination, String activityDescription,
                 String activityStartDateTime, String activityEndDateTime, String activityAddress,
                 String activityPhone, String activityWebsite, String activityEmail, int activityPriority
-            ,String activityImage1,String activityImage2,String activityImage3,ArrayList<String> uriActivityPath) {
+            ,String activityImage1,String activityImage2,String activityImage3,ArrayList<String> uriActivityPath,int cost) {
         this.type = type;
         this.activityTitle = activityTitle;
         this.activityDestination = activityDestination;
@@ -271,6 +287,7 @@ public class Trip {
         this.activityImage2 = activityImage2;
         this.activityImage3 = activityImage3;
         this.uriActivityPath = uriActivityPath;
+        this.cost = cost;
     }
 
     private int type;

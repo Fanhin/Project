@@ -18,8 +18,19 @@ public interface ListTripsDao {
     @Insert
     long insertListTrips(ListTrips listTrips);
 
+    @Transaction
+    @Insert
+    void insertTrip(Trip trip);
+
+    @Transaction
     @Update
     void update(ListTrips listTrips);
+
+    @Update
+    void updateTrip(Trip trip);
+
+    @Delete
+    void deleteTrip(Trip trip);
 
     @Delete
     void delete(ListTrips listTrips);
@@ -31,8 +42,12 @@ public interface ListTripsDao {
     @Query("SELECT * FROM list_trips_table  ORDER BY idListTrips ASC")
     LiveData<List<ListTrips>> getAllListTrips();
 
-    @Query("SELECT * FROM trip_table WHERE id_fkListTrips = :id LIMIT 1")
-    LiveData<List<Trip>> getTripsByIdFK(long id);
+    @Query("SELECT * FROM trip_table WHERE id_fkListTrips = :id ORDER BY COALESCE(activityStartDateTime,lodgingCheckInDateTime,airplaneDepartureDateTime,trainDepartureDateTime,busDepartureDateTime,boatDepartureDateTime,pickupDateTime)  ASC")
+    LiveData<List<Trip>> getTripWithIdFK(long id);
+
+    @Query("DELETE FROM trip_table WHERE id_fkListTrips = :id")
+     void deleteAllTripsWithIdFK(long id);
+
 
 
 }

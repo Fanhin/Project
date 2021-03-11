@@ -35,6 +35,10 @@ public class ListTripsRepository {
         new InsertListTripAsyncTask(listTripsDao).execute(listTrips);
     }
 
+    public void insertTrip(Trip trip) {
+        new InsertTripAsyncTask(listTripsDao).execute(trip);
+    }
+
 
 
     public void update(ListTrips listTrips){
@@ -52,13 +56,34 @@ public class ListTripsRepository {
         new ListTripsRepository.DeleteAllTripAsyncTask(listTripsDao).execute();
     }
 
-    public LiveData<List<ListTrips>>getAllListTrips( ){
-
-        return allListTrips;
-    }
 
     public LiveData<List<Trip>> getTripsWithIdFK(long idFk) {
-        return listTripsDao.getTripsByIdFK(idFk);
+        return listTripsDao.getTripWithIdFK(idFk);
+    }
+
+
+
+
+    public void deleteAllTripsWithIdFK(ListTrips listTrips){
+
+        new ListTripsRepository.DeleteAllTripWithIdFKAsyncTask(listTripsDao).execute(listTrips);
+    }
+
+
+
+    private static class DeleteAllTripWithIdFKAsyncTask extends AsyncTask<ListTrips,Void,Void> {
+        private ListTripsDao listTripsDao;
+
+        private DeleteAllTripWithIdFKAsyncTask(ListTripsDao listTripsDao){
+            this.listTripsDao = listTripsDao;
+        }
+
+        @Override
+        protected Void doInBackground(ListTrips... listTrips) {
+
+            listTripsDao.deleteAllTripsWithIdFK(listTrips[0].getId());
+            return null;
+        }
     }
 
 
@@ -77,6 +102,21 @@ public class ListTripsRepository {
         protected Void doInBackground(ListTrips... listTrips) {
 
             listTripsDao.insertListTrips(listTrips[0]);
+            return null;
+        }
+    }
+
+    private static class InsertTripAsyncTask extends AsyncTask<Trip,Void,Void> {
+        private ListTripsDao listTripsDao;
+
+        private InsertTripAsyncTask(ListTripsDao listTripsDao){
+
+            this.listTripsDao = listTripsDao;
+        }
+
+        @Override
+        protected Void doInBackground(Trip... trips) {
+            listTripsDao.insertTrip(trips[0]);
             return null;
         }
     }

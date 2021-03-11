@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     List<ItemV2> itemV2;
     ArrayList<String> imageUrisLodgingPath;
     ArrayList<String> imageUrisActivityPath;
-    long idFk;
+    public long idFk;
 
 
     @Override
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
         //adapter
         recyclerView.setAdapter(adapter);
-        tripViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TripViewModel.class);
+        tripViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TripViewModel.class);;
         tripViewModel.getAllTripsWithIdFK(idFk).observe(this, new Observer<List<Trip>>() {
             @Override
             public void onChanged(@Nullable List<Trip> trips) {
@@ -186,8 +186,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(Trip trip,int type) {
                 Intent intentLodging = new Intent(MainActivity.this, LodgingEditActivity.class);
                 Intent intentActivity = new Intent(MainActivity.this, ActivityActivity.class);
+                Log.e("idT after click edit",String.valueOf(trip.getId_fkListTrips()));
                 if (type == 1){
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_ID, trip.getIdTrip());
+                    intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_ID_FK,trip.getId_fkListTrips());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_TITLE, trip.getLodgingTitle());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_DESCRIPTION,trip.getLodgingDescription());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_CHECK_IN_DATE_TIME, trip.getLodgingCheckInDateTime());
@@ -200,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intentLodging, EDIT_LODGING);
                 } else if (type == 2){
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_ID, trip.getIdTrip());
+                    intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_ID_FK,trip.getId_fkListTrips());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_TITLE,trip.getActivityTitle());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_DESTINATION,trip.getActivityDestination());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_DESCRIPTION,trip.getActivityDescription());
@@ -247,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
 
             Trip activity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
                     activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1
-                    ,activityImagePath2,activityImagePath3,imageUrisActivityPath);
+                    ,activityImagePath2,activityImagePath3,imageUrisActivityPath,100);
             activity.setId_fkListTrips(idFk);
 
             tripViewModel.insert(activity);
@@ -257,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
         }else if (requestCode == EDIT_ACTIVITY && resultCode == Activity.RESULT_OK) {
             //get data from activity
             int id = data.getIntExtra(ActivityActivity.EXTRA_ACTIVITY_ID, -1);
+            long edfitIdFk = data.getLongExtra(ActivityActivity.EXTRA_ACTIVITY_ID_FK,-2);
 
             if (id == -1) {
                 Toast.makeText(this, "Trip cant be updated", Toast.LENGTH_SHORT).show();
@@ -282,15 +286,15 @@ public class MainActivity extends AppCompatActivity {
 
             Trip editActivity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
                     activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1,
-                    activityImagePath2,activityImagePath3,imageUrisActivityPath);
+                    activityImagePath2,activityImagePath3,imageUrisActivityPath,100);
             editActivity.setIdTrip(id);
+            editActivity.setId_fkListTrips(edfitIdFk);
+            //editActivity.setId_fkListTrips(idFk);
             tripViewModel.update(editActivity);
 
             Toast.makeText(this, "activity updated", Toast.LENGTH_SHORT).show();
 
         } else if (requestCode == ADD_TRANSPORTATION_FRAGMENT && resultCode == EXTRA_Airplane   ) {
-            //get data from transportation spinner activity
-            //airplane data
 
             String airplaneDepartureDateTimeText = data.getStringExtra(TransportationSpinner.EXTRA_AirplaneDepartureDateTime);
             String departureAirplaneAirlineText = data.getStringExtra(TransportationSpinner.EXTRA_DepartureAirplaneAirline);
@@ -306,7 +310,8 @@ public class MainActivity extends AppCompatActivity {
 
             Trip airplaneTransportation = new Trip(2,airplaneDepartureDateTimeText, departureAirplaneAirlineText, departureAirplaneFlightNumberText,
                     departureAirplaneSeatsText, departureAirplaneTerminalText, departureAirplaneGateText,
-                    airplaneArrivalDateTimeText, arrivalArrivingCityOrAirportText, arrivalTerminalText, arrivalGateText,airplaneDescription);
+                    airplaneArrivalDateTimeText, arrivalArrivingCityOrAirportText, arrivalTerminalText, arrivalGateText,airplaneDescription,100);
+            airplaneTransportation.setId_fkListTrips(idFk);
 
             tripViewModel.insert(airplaneTransportation);
 
@@ -326,8 +331,8 @@ public class MainActivity extends AppCompatActivity {
             String trainSeatsText = data.getStringExtra(TransportationSpinner.EXTRA_TrainSeats);
 
             Trip trainTransportation = new Trip(3,trainDepartureDateTimeText, departureTrainStationText, departureTrainAddressText,
-                    trainArrivalDateTimeText, trainArrivalStationText, trainTypeText, trainNumberText,trainCoachText, trainClassText, trainSeatsText);
-
+                    trainArrivalDateTimeText, trainArrivalStationText, trainTypeText, trainNumberText,trainCoachText, trainClassText, trainSeatsText,100);
+            trainTransportation.setId_fkListTrips(idFk);
             tripViewModel.insert(trainTransportation);
 
             Toast.makeText(this, "Train Transportation save", Toast.LENGTH_SHORT).show();
@@ -342,7 +347,8 @@ public class MainActivity extends AppCompatActivity {
             String busArrivalAddressText = data.getStringExtra(TransportationSpinner.EXTRA_BusArrivalAddress);
 
             Trip busTransportation = new Trip(4,busDepartureDateTimeText, busLicensePlateText, departureBusAddressText,
-                    busArrivalDateTimeText, busArrivalAddressText);
+                    busArrivalDateTimeText, busArrivalAddressText,100);
+            busTransportation.setId_fkListTrips(idFk);
 
 
             tripViewModel.insert(busTransportation);
@@ -368,8 +374,8 @@ public class MainActivity extends AppCompatActivity {
 
             Trip boatTransportation = new Trip(5,boatDepartureDateTimeText, boatNameText, departureBoatLocationText,
                     departureBoatAddressText, boatArrivalDateTimeText, arrivalBoatLocationText, arrivalBoatAddressText,
-                    portNameText, portAddressText, cabinTypeText, cabinNumberText, boatDescriptionText,boatPhoneText);
-
+                    portNameText, portAddressText, cabinTypeText, cabinNumberText, boatDescriptionText,boatPhoneText,100);
+            boatTransportation.setId_fkListTrips(idFk);
 
             tripViewModel.insert(boatTransportation);
 
@@ -395,8 +401,8 @@ public class MainActivity extends AppCompatActivity {
             Trip carRentalTransportation = new Trip(6,rentalAgencyText, pickupDateTimeText, pickupLocationText,
                     carRentalPickupAddressText, carRentalPhoneText, dropOffDateTimeText, dropOffLocationText,
                     dropOffAddressText, carRentalWebsiteText, carRentalEmailText, carRentalDescriptionText,
-                    carRentalConfirmationText);
-
+                    carRentalConfirmationText,100);
+            carRentalTransportation.setId_fkListTrips(idFk);
 
 
             tripViewModel.insert(carRentalTransportation);
@@ -419,12 +425,12 @@ public class MainActivity extends AppCompatActivity {
             //imageUrisLodgingPath = data.getExtras().getStringArrayList("strLodgingImagePath");
 
             imageUrisLodgingPath = data.getExtras().getStringArrayList("strLodgingImagePath");
-            //Log.e("hhhhhhhhh",imageUrisLodgingPath.get(0));
             Log.e("path add",imageUrisLodgingPath.toString());
 
             Trip lodging = new Trip(0,lodgingTitle, lodgingCheckInDateTime, lodgingCheckOutDateTime,lodgingDescription,
                     lodgingAddress, lodgingPhone, lodgingWebsite, lodgingEmail,lodgingImagePath1,lodgingImagePath2,
-                    lodgingImagePath3,imageUrisLodgingPath);
+                    lodgingImagePath3,imageUrisLodgingPath,100);
+            lodging.setId_fkListTrips(idFk);
             tripViewModel.insert(lodging);
 
 
@@ -433,6 +439,7 @@ public class MainActivity extends AppCompatActivity {
         } //for edit lodging and update data
         else if (requestCode == EDIT_LODGING && resultCode == Activity.RESULT_OK) {
             int id = data.getIntExtra(LodgingEditActivity.EXTRA_LODGING_ID, -1);
+            long editIdFk = data.getLongExtra(LodgingEditActivity.EXTRA_LODGING_ID_FK,-2);
 
             if (id == -1) {
                 Toast.makeText(this, "Trip cant be updated", Toast.LENGTH_SHORT).show();
@@ -455,8 +462,9 @@ public class MainActivity extends AppCompatActivity {
 
             Trip editLodging = new Trip(0,lodgingTitle, lodgingCheckInDateTime, lodgingCheckOutDateTime
                     ,lodgingDescription, lodgingAddress, lodgingPhone, lodgingWebsite, lodgingEmail,lodgingImagePath1,
-                    lodgingImagePath2,lodgingImagePath3,imageUrisLodgingPath);
+                    lodgingImagePath2,lodgingImagePath3,imageUrisLodgingPath,100);
             editLodging.setIdTrip(id);
+            editLodging.setId_fkListTrips(editIdFk);
             tripViewModel.update(editLodging);
 
             Toast.makeText(this, "lodging updated", Toast.LENGTH_SHORT).show();

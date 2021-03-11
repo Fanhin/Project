@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.tripbuddyv2.Trip;
 import com.example.tripbuddyv2.TripDatabase;
 
 import java.util.List;
@@ -33,8 +34,19 @@ public class ListTripsViewModel extends AndroidViewModel {
     }
 
 
+    public void insertTrip(Trip trip) {
+        listTripsRepository.insertTrip(trip);
+    }
+
+
     public void delete(ListTrips listTrips){
         listTripsRepository.delete(listTrips);
+    }
+
+    public void deleteAllTripsWithIdFK(ListTrips listTrips){
+
+
+        listTripsRepository.deleteAllTripsWithIdFK(listTrips);
     }
 
 
@@ -45,7 +57,8 @@ public class ListTripsViewModel extends AndroidViewModel {
     }
 
 
-    public void getTripsWithIdFK(long idFk) {
-        listTripsRepository.getTripsWithIdFK(idFk);
+    public LiveData<List<Trip>> getAllTripsWithIdFK(long idFk) {
+        return listTripsRepository.getTripsWithIdFK(idFk);
     }
+
 }

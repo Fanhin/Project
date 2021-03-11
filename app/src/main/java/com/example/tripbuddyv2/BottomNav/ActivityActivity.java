@@ -38,6 +38,9 @@ import java.util.Calendar;
 public class ActivityActivity extends AppCompatActivity {
     public static final String EXTRA_ACTIVITY_ID =
             "com.example.tripbuddyv2.EXTRA_ACTIVITY_ID";
+    public static final String EXTRA_ACTIVITY_ID_FK =
+            "com.example.tripbuddyv2.EXTRA_ACTIVITY_ID_FK";
+
 
     public static final String EXTRA_ACTIVITY_TITLE =
             "com.example.tripbuddyv2.EXTRA_ACTIVITY_TITLE";
@@ -100,9 +103,7 @@ public class ActivityActivity extends AppCompatActivity {
 
     public static final int PICK_IMAGES_ACTIVITY_CODE =0;
 
-
     int position = 0;
-
 
 
     @Override
@@ -136,7 +137,6 @@ public class ActivityActivity extends AppCompatActivity {
             }
         });
 
-
         previousBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,7 +146,6 @@ public class ActivityActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(ActivityActivity.this, "No Previous image", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });
@@ -164,9 +163,6 @@ public class ActivityActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
         editTextActivityTitle = findViewById(R.id.edit_text_activity_title);
         editTextActivityDestination = findViewById(R.id.edit_text_activity_destination);
@@ -207,7 +203,7 @@ public class ActivityActivity extends AppCompatActivity {
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         Intent intent = getIntent();
-        if (intent.hasExtra(EXTRA_ACTIVITY_ID)) {
+        if (intent.hasExtra(EXTRA_ACTIVITY_ID)&&intent.hasExtra(EXTRA_ACTIVITY_ID_FK)) {
             setTitle("Edit Activity");
             editTextActivityTitle.setText(intent.getStringExtra(EXTRA_ACTIVITY_TITLE));
             editTextActivityDestination.setText(intent.getStringExtra(EXTRA_ACTIVITY_DESTINATION));
@@ -225,6 +221,7 @@ public class ActivityActivity extends AppCompatActivity {
 //               restoreImage(imageUrisPath2);
 //           }
             Log.e("path from edit",getIntent().getExtras().getStringArrayList((EXTRA_ACTIVITY_ARRAY_OF_IMAGE)).toString());
+
             if (!getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE).isEmpty()){
                 imageUrisPath2 = getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE);
                 Log.e("title ",intent.getStringExtra(EXTRA_ACTIVITY_TITLE));
@@ -232,14 +229,10 @@ public class ActivityActivity extends AppCompatActivity {
                 restoreImage(imageUrisPath2);
 
             }
-
-
         } else {
             setTitle("Add Activity ");
 
         }
-
-
     }
 
     private void restoreImage(ArrayList<String> imageUrisPath) {
@@ -394,8 +387,12 @@ public class ActivityActivity extends AppCompatActivity {
         activityData.putStringArrayListExtra("strActivityImagePath",imageUrisPath);
 
         int id = getIntent().getIntExtra(EXTRA_ACTIVITY_ID,-1);
-        if (id != -1){
+       long idFk = getIntent().getLongExtra(EXTRA_ACTIVITY_ID_FK,-2);
+        Log.e("id fk after update",String.valueOf(idFk));
+        if (id != -1 ){
             activityData.putExtra(EXTRA_ACTIVITY_ID,id);
+
+            activityData.putExtra(EXTRA_ACTIVITY_ID_FK,idFk);
         }
 
 

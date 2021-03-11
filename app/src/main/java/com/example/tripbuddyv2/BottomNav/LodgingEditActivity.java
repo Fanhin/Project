@@ -41,6 +41,9 @@ import java.util.Calendar;
 public class LodgingEditActivity extends AppCompatActivity {
     public static final String EXTRA_LODGING_ID =
             "com.example.tripbuddyv2.EXTRA_LODGING_ID";
+    public static final String EXTRA_LODGING_ID_FK =
+            "com.example.tripbuddyv2.EXTRA_LODGING_ID_FK";
+
 
     public static final String EXTRA_LODGING_TITLE =
             "com.example.tripbuddyv2.EXTRA_LODGING_TITLE";
@@ -194,7 +197,7 @@ public class LodgingEditActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        if (intent.hasExtra(EXTRA_LODGING_ID)) {
+        if (intent.hasExtra(EXTRA_LODGING_ID)&&intent.hasExtra(EXTRA_LODGING_ID_FK)) {
             setTitle("Edit Lodging");
             editTextLodgingTitle.setText(intent.getStringExtra(EXTRA_LODGING_TITLE));
             editTextLodgingDescription.setText(intent.getStringExtra(EXTRA_LODGING_DESCRIPTION));
@@ -206,6 +209,7 @@ public class LodgingEditActivity extends AppCompatActivity {
             editTextLodgingEmail.setText(intent.getStringExtra(EXTRA_LODGING_EMAIL));
 
             Log.e("path from edit",getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE)).toString());
+
             if (!getIntent().getExtras().getStringArrayList(EXTRA_LODGING_ARRAY_OF_IMAGE).isEmpty()){
                 imageUrisPath2 = getIntent().getExtras().getStringArrayList(EXTRA_LODGING_ARRAY_OF_IMAGE);
                 Log.e("title ",intent.getStringExtra(EXTRA_LODGING_TITLE));
@@ -380,13 +384,12 @@ public class LodgingEditActivity extends AppCompatActivity {
         lodgingData.putStringArrayListExtra("strLodgingImagePath",imageUrisPath);
 
 
-
-
-
         int id = getIntent().getIntExtra(EXTRA_LODGING_ID,-1);
+        long idFk = getIntent().getLongExtra(EXTRA_LODGING_ID_FK,-2);
         if (id != -1){
             lodgingData.putExtra(EXTRA_LODGING_ID,id);
-            //lodgingData.putStringArrayListExtra(EXTRA_LODGING_ARRAY_OF_IMAGE,imageUrisPath);
+            lodgingData.putExtra(EXTRA_LODGING_ID_FK,idFk);
+            lodgingData.putStringArrayListExtra(EXTRA_LODGING_ARRAY_OF_IMAGE,imageUrisPath);
         }
 
 

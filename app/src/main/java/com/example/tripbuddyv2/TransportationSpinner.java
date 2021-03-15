@@ -114,6 +114,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,R.array.transportation_menu,android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
+        spinner.setSelection(0);
         spinner.setOnItemSelectedListener(this);
 
 
@@ -155,6 +156,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
 
     }
 

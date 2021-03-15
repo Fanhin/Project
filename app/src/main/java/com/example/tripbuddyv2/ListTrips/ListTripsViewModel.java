@@ -35,7 +35,7 @@ public class ListTripsViewModel extends AndroidViewModel {
 
 
     public void insertTrip(Trip trip) {
-        listTripsRepository.insertTrip(trip);
+            listTripsRepository.insertTrip(trip);
     }
 
 
@@ -50,8 +50,6 @@ public class ListTripsViewModel extends AndroidViewModel {
     }
 
 
-
-
     public LiveData<List<ListTrips>> getAllListTrips() {
         return allListTrips;
     }
@@ -59,6 +57,10 @@ public class ListTripsViewModel extends AndroidViewModel {
 
     public LiveData<List<Trip>> getAllTripsWithIdFK(long idFk) {
         return listTripsRepository.getTripsWithIdFK(idFk);
+    }
+
+    public long getTotalExpense(ListTrips listTrips){
+        return listTripsRepository.getTotalExpense(listTrips);
     }
 
 }

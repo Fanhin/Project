@@ -69,6 +69,9 @@ public class ListTripsRepository {
         new ListTripsRepository.DeleteAllTripWithIdFKAsyncTask(listTripsDao).execute(listTrips);
     }
 
+    public long getTotalExpense(ListTrips listTrips) {
+        return listTripsDao.getTotalExpense(listTrips.getIdListTrips());
+    }
 
 
     private static class DeleteAllTripWithIdFKAsyncTask extends AsyncTask<ListTrips,Void,Void> {

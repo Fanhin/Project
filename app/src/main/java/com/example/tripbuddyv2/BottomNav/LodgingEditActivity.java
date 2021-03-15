@@ -32,6 +32,7 @@ import android.widget.ViewSwitcher;
 import com.bumptech.glide.Glide;
 import com.example.tripbuddyv2.R;
 import com.example.tripbuddyv2.TripAdapter;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -69,6 +70,9 @@ public class LodgingEditActivity extends AppCompatActivity {
             "com.example.tripbuddyv2.EXTRA_LODGING_IMAGE_PATH3";
     public static final String EXTRA_LODGING_ARRAY_OF_IMAGE =
             "com.example.tripbuddyv2.EXTRA_LODGING_ARRAY_OF_IMAGE";
+    public static final String EXTRA_LODGING_EXPENSE =
+            "com.example.tripbuddyv2.EXTRA_LODGING_EXPENSE";
+
 
 
 
@@ -80,6 +84,7 @@ public class LodgingEditActivity extends AppCompatActivity {
     private EditText editTextLodgingPhone;
     private EditText editTextLodgingWebsite;
     private EditText editTextLodgingEmail;
+    private EditText editTextLodgingExpense;
 
     private Button buttonSaveLodging;
 
@@ -93,12 +98,29 @@ public class LodgingEditActivity extends AppCompatActivity {
     public static final int PICK_IMAGES_LODGING_CODE =0;
 
     int position = 0;
+    MaterialToolbar topAppBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lodging);
+
+        topAppBar = findViewById(R.id.topAppBar);
+        topAppBar.setTitle("Add Lodging");
+
+        setSupportActionBar(topAppBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        topAppBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_close));
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
 
 
@@ -166,7 +188,9 @@ public class LodgingEditActivity extends AppCompatActivity {
         editTextLodgingPhone = findViewById(R.id.edit_text_lodging_phone);
         editTextLodgingWebsite = findViewById(R.id.edit_text_lodging_website);
         editTextLodgingEmail = findViewById(R.id.edit_text_lodging_email);
+        editTextLodgingExpense = findViewById(R.id.edit_text_lodging_expense);
         buttonSaveLodging = findViewById(R.id.lodging_save_button);
+
 
         buttonSaveLodging.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,8 +216,8 @@ public class LodgingEditActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
 
         Intent intent = getIntent();
@@ -206,7 +230,8 @@ public class LodgingEditActivity extends AppCompatActivity {
             editTextLodgingAddress.setText(intent.getStringExtra(EXTRA_LODGING_ADDRESS));
             editTextLodgingPhone.setText(intent.getStringExtra(EXTRA_LODGING_PHONE));
             editTextLodgingWebsite.setText(intent.getStringExtra(EXTRA_LODGING_WEBSITE));
-            editTextLodgingEmail.setText(intent.getStringExtra(EXTRA_LODGING_EMAIL));
+            editTextLodgingEmail.setText(String.valueOf(intent.getIntExtra(EXTRA_LODGING_EMAIL,0)));
+            editTextLodgingExpense.setText(intent.getStringExtra(EXTRA_LODGING_EXPENSE));
 
             Log.e("path from edit",getIntent().getExtras().getStringArrayList((EXTRA_LODGING_ARRAY_OF_IMAGE)).toString());
 
@@ -362,6 +387,7 @@ public class LodgingEditActivity extends AppCompatActivity {
         String lodgingPhone = editTextLodgingPhone.getText().toString();
         String lodgingWebsite = editTextLodgingWebsite.getText().toString();
         String lodgingEmail = editTextLodgingEmail.getText().toString();
+        String lodgingExpense = editTextLodgingExpense.getText().toString();
         //Bundle lodgingImageBundle = new Bundle();
         //lodgingImageBundle.putSerializable("imageUrisPathBundle", imageUrisPath);
 
@@ -380,6 +406,7 @@ public class LodgingEditActivity extends AppCompatActivity {
         lodgingData.putExtra(EXTRA_LODGING_PHONE, lodgingPhone);
         lodgingData.putExtra(EXTRA_LODGING_WEBSITE, lodgingWebsite);
         lodgingData.putExtra(EXTRA_LODGING_EMAIL, lodgingEmail);
+        lodgingData.putExtra(EXTRA_LODGING_EXPENSE,lodgingExpense);
         //lodgingData.putExtra("imageUrisPath",lodgingImageBundle);
         lodgingData.putStringArrayListExtra("strLodgingImagePath",imageUrisPath);
 

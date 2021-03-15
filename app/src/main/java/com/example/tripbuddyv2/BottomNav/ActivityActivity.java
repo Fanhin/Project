@@ -30,6 +30,7 @@ import android.widget.ViewSwitcher;
 import com.bumptech.glide.Glide;
 import com.example.tripbuddyv2.R;
 import com.example.tripbuddyv2.TripAdapter;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,6 +71,9 @@ public class ActivityActivity extends AppCompatActivity {
             "com.example.tripbuddyv2.EXTRA_ACTIVITY_IMAGE_PATH3";
     public static final String EXTRA_ACTIVITY_ARRAY_OF_IMAGE =
             "com.example.tripbuddyv2.EXTRA_ACTIVITY_ARRAY_OF_IMAGE";
+    public static final String EXTRA_ACTIVITY_EXPENSE =
+            "com.example.tripbuddyv2.EXTRA_ACTIVITY_EXPENSE";
+
 
 
 
@@ -82,6 +86,7 @@ public class ActivityActivity extends AppCompatActivity {
     private EditText editTextActivityPhone;
     private EditText editTextActivityWebsite;
     private EditText editTextActivityEmail;
+    private EditText editTextActivityExpense;
     private NumberPicker editTextActivityPriority;
 
     private Button buttonSaveActivity;
@@ -105,6 +110,8 @@ public class ActivityActivity extends AppCompatActivity {
 
     int position = 0;
 
+    MaterialToolbar topAppBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +122,21 @@ public class ActivityActivity extends AppCompatActivity {
         previousBtn = findViewById(R.id.previousActivityBtn);
         nextBtn = findViewById(R.id.nextActivityBtn);
         pickImagesBtn = findViewById(R.id.pickImagesActivityBtn);
+
+        topAppBar = findViewById(R.id.topAppBar);
+        topAppBar.setTitle("Add Activity");
+
+        setSupportActionBar(topAppBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        topAppBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_close));
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         //init list
@@ -173,6 +195,7 @@ public class ActivityActivity extends AppCompatActivity {
         editTextActivityPhone= findViewById(R.id.edit_text_activity_phone);
         editTextActivityWebsite= findViewById(R.id.edit_text_activity_website);
         editTextActivityEmail= findViewById(R.id.edit_text_activity_email);
+        editTextActivityExpense = findViewById(R.id.edit_text_activity_expense);
         editTextActivityPriority = findViewById(R.id.edit_text_activity_number_picker_priority);
         editTextActivityPriority.setMinValue(1);
         editTextActivityPriority.setMaxValue(10);
@@ -201,7 +224,7 @@ public class ActivityActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         Intent intent = getIntent();
         if (intent.hasExtra(EXTRA_ACTIVITY_ID)&&intent.hasExtra(EXTRA_ACTIVITY_ID_FK)) {
             setTitle("Edit Activity");
@@ -214,6 +237,7 @@ public class ActivityActivity extends AppCompatActivity {
             editTextActivityPhone.setText(intent.getStringExtra(EXTRA_ACTIVITY_PHONE));
             editTextActivityWebsite.setText(intent.getStringExtra(EXTRA_ACTIVITY_WEBSITE));
             editTextActivityEmail .setText(intent.getStringExtra(EXTRA_ACTIVITY_EMAIL));
+            editTextActivityExpense.setText(String.valueOf(intent.getIntExtra(EXTRA_ACTIVITY_EXPENSE,0)));
             editTextActivityPriority.setValue(intent.getIntExtra(EXTRA_ACTIVITY_PRIORITY, 1));
 
 //           if (!getIntent().getExtras().getStringArrayList(EXTRA_ACTIVITY_ARRAY_OF_IMAGE).isEmpty()){
@@ -362,6 +386,7 @@ public class ActivityActivity extends AppCompatActivity {
         String activityPhone = editTextActivityPhone.getText().toString();
         String activityWebsite = editTextActivityWebsite.getText().toString();
         String activityEmail = editTextActivityEmail.getText().toString();
+        String activityExpense = editTextActivityExpense.getText().toString();
         int activityPriority = editTextActivityPriority.getValue();
 
 
@@ -380,6 +405,7 @@ public class ActivityActivity extends AppCompatActivity {
         activityData.putExtra(EXTRA_ACTIVITY_PHONE,activityPhone);
         activityData.putExtra(EXTRA_ACTIVITY_WEBSITE,activityWebsite);
         activityData.putExtra(EXTRA_ACTIVITY_EMAIL,activityEmail);
+        activityData.putExtra(EXTRA_ACTIVITY_EXPENSE,activityExpense);
         activityData.putExtra(EXTRA_ACTIVITY_PRIORITY,activityPriority);
         activityData.putExtra(EXTRA_ACTIVITY_IMAGE_PATH1,activityImagePath1);
         activityData.putExtra(EXTRA_ACTIVITY_IMAGE_PATH2,activityImagePath2);

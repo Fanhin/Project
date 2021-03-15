@@ -43,6 +43,10 @@ public class TripViewModel extends AndroidViewModel {
        return repository.getTripsWithIdFK(idFk);
     }
 
+    public long getTotalExpenseWithIdFk(long idFk){
+         return repository.getTotalExpenseWithIdFk(idFk);
+    }
+
 
 
 

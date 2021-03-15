@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/spinner_style"
-        android:id="@+id/spinner"
-        android:layout_margin="10dp"
-        android:spinnerMode="dropdown" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF143C6D"
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="Travel Buddy"
+            app:titleTextColor="#FFFFFF"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!--    <Spinner-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        android:background="@drawable/spinner_style"-->
+<!--        android:id="@+id/spinner"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:spinnerMode="dropdown" />-->
+<Spinner
+    android:id="@+id/spinner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingBottom="8dp"
+    android:spinnerMode="dropdown"
+    android:paddingTop="8dp"
+    android:textColor="#000000"
+    android:theme="@android:style/Theme.Holo.Light"/>
 
 
     <FrameLayout

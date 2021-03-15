@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.tripbuddyv2.ListTrips.ListTrips;
 import com.example.tripbuddyv2.ListTrips.ListTripsDao;
 
-@Database(entities = {Trip.class, ListTrips.class},version = 40 )
+@Database(entities = {Trip.class, ListTrips.class},version = 41 )
 @TypeConverters({UriConverter.class})
 public abstract class TripDatabase extends RoomDatabase  {
 
@@ -27,6 +27,7 @@ public abstract class TripDatabase extends RoomDatabase  {
         if (instance == null){
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     TripDatabase.class,"trip_database")
+                    .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
@@ -57,8 +58,6 @@ public abstract class TripDatabase extends RoomDatabase  {
 
         @Override
         protected Void doInBackground(Void... voids) {
-
-
 
 
             return null;

@@ -48,22 +48,25 @@ public class TripRepository  {
         return tripDao.getTripWithIdFK(idFk);
     }
 
+    public long getTotalExpenseWithIdFk(long idFk) {
+         //new GetTotalExpenseWithIdFk(tripDao).execute(idFk);
+        return tripDao.getTotalExpenseWithIdFk(idFk);
+    }
+
+    public static class GetTotalExpenseWithIdFk extends AsyncTask<Long,Long,Long>{
+        private  TripDao tripDao;
+
+        private GetTotalExpenseWithIdFk(TripDao tripDao){
+
+            this.tripDao = tripDao;
+        }
 
 
-//    private static class GetAllTripsWithIdFKAsyncTask extends AsyncTask<Long,Void,LiveData<List<Trip>>> {
-//        private TripDao tripDao;
-//        private GetAllTripsWithIdFKAsyncTask(TripDao tripDao){
-//
-//            this.tripDao = tripDao;
-//        }
-//
-//        @Override
-//        protected LiveData<List<Trip>> doInBackground(Long... longs) {
-//
-//
-//            return  tripDao.getTripWithIdFK(longs[0]);
-//        }
-//    }
+        @Override
+        protected Long doInBackground(Long... longs) {
+            return tripDao.getTotalExpenseWithIdFk(longs[0]);
+        }
+    }
 
 
     private static class InsertTripAsyncTask extends AsyncTask<Trip,Void,Void>{

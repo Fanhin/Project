@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripbuddyv2.AddTripActivity;
 import com.example.tripbuddyv2.BottomNav.LodgingEditActivity;
+import com.example.tripbuddyv2.Expense.ExpenseActivity;
 import com.example.tripbuddyv2.MainActivity;
 import com.example.tripbuddyv2.R;
 import com.example.tripbuddyv2.TransportationSpinner;
@@ -50,6 +51,7 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
     //init variable for drawer
     DrawerLayout drawerLayout;
     ActionBar actionBar;
+    MaterialToolbar topAppBar;
 
 
     public static final int LISTTRIP = 22;
@@ -61,6 +63,14 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
         setContentView(R.layout.nav_activity_main);
         FloatingActionButton buttonAddNote = findViewById(R.id.button_add_trip_list);
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        topAppBar =findViewById(R.id.topAppBar);
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClickMenu(drawerLayout);
+            }
+        });
 
 
 
@@ -169,12 +179,12 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
         }
     }
 
-    public void ClickHome(View view){
+    public void ClickDocument(View view){
         recreate();
     }
 
-    public void ClickDashboard(View view){
-        redirectActivity(this, AddTripActivity.class);
+    public void ClickExpense(View view){
+        redirectActivity(this, ExpenseActivity.class);
     }
 
     public void ClickAboutUs(View view){

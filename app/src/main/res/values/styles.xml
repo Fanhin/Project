@@ -1,18 +1,23 @@
 <resources>
     <!-- Base application theme. -->
     <!-- <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">-->
-    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight">
-        <!-- Customize your theme here. -->
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+         Customize your theme here.
         <item name="colorPrimary">#3F51B5</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#143C6D</item>
         <item name="colorAccent">@color/colorAccent</item>
 
 
+
+
     </style>
 
+
+
     <style name="Widget.MyApp.Button" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
     </style>
+
 
     <style name="Theme.App.NoActionBar">
         <item name="windowActionBar">false</item>

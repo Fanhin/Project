@@ -10,7 +10,7 @@
         android:layout_height="120dp"
         android:layout_margin="16dp"
         android:onClick="ClickLogo"
-        android:src="@drawable/lg_psu"/>
+        android:src="@drawable/ic_travel"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,20 +39,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="ClickHome">
+        android:onClick="ClickDocument">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_books"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Document"
             android:padding="12dp"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="0dp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="48dp"
-            android:src="@drawable/ic_books"/>
+
 
     </LinearLayout>
 
@@ -61,20 +63,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="ClickDashboard">
+        android:layout_marginTop="10dp"
+        android:onClick="ClickExpense">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_money"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Expense"
             android:padding="12dp"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="0dp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="48dp"
-            android:src="@drawable/ic_money"/>
+
 
     </LinearLayout>
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Dao
 public interface TripDao {
-
+    @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Trip trip);
 
@@ -33,5 +33,10 @@ public interface TripDao {
 
     @Query("SELECT * FROM trip_table WHERE id_fkListTrips=:idFk ORDER BY COALESCE(activityStartDateTime,lodgingCheckInDateTime,airplaneDepartureDateTime,trainDepartureDateTime,busDepartureDateTime,boatDepartureDateTime,pickupDateTime)  ASC")
     LiveData<List<Trip>> getTripWithIdFK(long idFk);
+
+    @Query("SELECT SUM(expense)  AS expenseTotal FROM trip_table WHERE id_fkListTrips = :idFk ")
+    long getTotalExpenseWithIdFk(long idFk);
+
+
 
 }

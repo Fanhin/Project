@@ -1,62 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fillViewport="true">
-
-
-    <RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="#FF143C6D"
+        >
 
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/top_app_bar"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="Travel Buddy"
+            app:titleTextColor="#FFFFFF"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
 
 
-            android:orientation="vertical">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="10dp"
+
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView2"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="0.2"
-                        android:text="Activity"
-                        android:textSize="40dp" />
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/activity_save_button"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MyApp.Button"
-                        android:layout_marginRight="10dp"
-                        android:textSize="12dp"
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="0.2"
+                            android:text="Activity"
+                            android:textSize="40dp" />
 
-                        android:text="save" />
+                        <Button
+                            android:id="@+id/activity_save_button"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.MyApp.Button"
+                            android:layout_marginRight="10dp"
+                            android:textSize="12dp"
 
-                </LinearLayout>
+                            android:text="save" />
 
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -65,306 +83,328 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginHorizontal="10dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical">
-
-
-<!--                            <EditText-->
-<!--                                -->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Event title"-->
-<!--                                android:inputType="none" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldEventTitle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Event title"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_title"
-
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_destination"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Destination"-->
-<!--                                android:inputType="none" />-->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldDestination"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Destination"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_destination"
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_description"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Description"-->
-<!--                                android:inputType="none" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Description"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_description"
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginHorizontal="10dp"
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical">
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_start_date_time"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Start Date/Time"-->
-<!--                                android:inputType="textPersonName"-->
-<!--                                android:text="" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldStartDateTime"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Start Date/Time"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_start_date_time"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_end_date_time"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="End Date/Time"-->
-<!--                                android:inputType="textPersonName"-->
-<!--                                android:text="" />-->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldEndDateTime"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="End Date/Time"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_end_date_time"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginHorizontal="10dp"
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical">
-
-
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_address"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Address"-->
-<!--                                android:inputType="textPersonName"-->
-<!--                                android:text="" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldAddress"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Address"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_address"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_phone"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Phone"-->
-<!--                                android:inputType="textPersonName"-->
-<!--                                android:text="" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldPhone"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Phone"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_phone"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_website"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="10dp"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Website"-->
-<!--                                android:inputType="textPersonName"-->
-<!--                                android:text="" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldWebsite"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Website"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_website"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/edit_text_activity_email"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:ems="10"-->
-<!--                                android:hint="Email"-->
-<!--                                android:inputType="textPersonName"-->
-<!--                                android:text="" />-->
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/outlinedTextFieldEmail"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:endIconMode="clear_text"
-                                app:endIconDrawable="@drawable/ic_cancel"
-                                android:hint="Email"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edit_text_activity_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="Priority:"
-                                android:textSize="25dp" />
-
-                            <NumberPicker
-                                android:id="@+id/edit_text_activity_number_picker_priority"
-                                android:layout_width="wrap_content"
-                                android:layout_height="110dp"
-
-                                />
-
-
-                            <Button
-                                android:id="@+id/pickImagesActivityBtn"
-                                android:layout_width="wrap_content"
-                                style="@style/Widget.MyApp.Button"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:text="Add Images"
-                                android:textSize="12dp" />
-                            <ImageSwitcher
-                                android:layout_width="match_parent"
-                                android:id="@+id/imageActivityIs"
-                                android:layout_height="450dp"/>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-                                <Button
-                                    android:id="@+id/previousActivityBtn"
-                                    android:text="Previous"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical">
+
+
+                                <!--                            <EditText-->
+                                <!--                                -->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Event title"-->
+                                <!--                                android:inputType="none" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldEventTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Event title"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_title"
+
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_destination"-->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Destination"-->
+                                <!--                                android:inputType="none" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDestination"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Destination"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_destination"
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_description"-->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Description"-->
+                                <!--                                android:inputType="none" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldDescription"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Description"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_description"
+
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical">
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_start_date_time"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Start Date/Time"-->
+                                <!--                                android:inputType="textPersonName"-->
+                                <!--                                android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldStartDateTime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Start Date/Time"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_start_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_end_date_time"-->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="End Date/Time"-->
+                                <!--                                android:inputType="textPersonName"-->
+                                <!--                                android:text="" />-->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldEndDateTime"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="End Date/Time"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_end_date_time"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical">
+
+
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_address"-->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Address"-->
+                                <!--                                android:inputType="textPersonName"-->
+                                <!--                                android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Address"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_phone"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Phone"-->
+                                <!--                                android:inputType="textPersonName"-->
+                                <!--                                android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldPhone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Phone"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_phone"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_website"-->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_marginTop="10dp"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Website"-->
+                                <!--                                android:inputType="textPersonName"-->
+                                <!--                                android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldWebsite"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Website"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_website"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!--                            <EditText-->
+                                <!--                                android:id="@+id/edit_text_activity_email"-->
+                                <!--                                android:layout_width="match_parent"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_weight="1"-->
+                                <!--                                android:ems="10"-->
+                                <!--                                android:hint="Email"-->
+                                <!--                                android:inputType="textPersonName"-->
+                                <!--                                android:text="" />-->
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldEmail"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Email"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_email"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/outlinedTextFieldEmailExpense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:endIconMode="clear_text"
+                                    app:endIconDrawable="@drawable/ic_cancel"
+                                    android:hint="Expense"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/edit_text_activity_expense"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Priority:"
+                                    android:textSize="25dp" />
+
+                                <NumberPicker
+                                    android:id="@+id/edit_text_activity_number_picker_priority"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="110dp"
+
+                                    />
+
 
                                 <Button
-                                    android:id="@+id/nextActivityBtn"
-                                    android:text="Next"
+                                    android:id="@+id/pickImagesActivityBtn"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    style="@style/Widget.MyApp.Button"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Add Images"
+                                    android:textSize="12dp" />
+                                <ImageSwitcher
+                                    android:layout_width="match_parent"
+                                    android:id="@+id/imageActivityIs"
+                                    android:layout_height="450dp"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <Button
+                                        android:id="@+id/previousActivityBtn"
+                                        android:text="Previous"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+
+                                    <Button
+                                        android:id="@+id/nextActivityBtn"
+                                        android:text="Next"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
@@ -372,14 +412,17 @@
 
                     </LinearLayout>
 
+
                 </LinearLayout>
-
-
             </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
+
+
+
+</LinearLayout>
+
 <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<RelativeLayout-->
 <!--    xmlns:android="http://schemas.android.com/apk/res/android"-->

@@ -48,6 +48,9 @@ public interface ListTripsDao {
     @Query("DELETE FROM trip_table WHERE id_fkListTrips = :id")
      void deleteAllTripsWithIdFK(long id);
 
+    @Query(("SELECT SUM(expense) FROM trip_table WHERE id_fkListTrips = :id "))
+    long getTotalExpense(long id);
+
 
 
 }

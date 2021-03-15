@@ -30,6 +30,7 @@ import com.example.tripbuddyv2.Models.Item;
 import com.example.tripbuddyv2.Models.Lodging;
 import com.example.tripbuddyv2.Models.Transportation;
 import com.example.tripbuddyv2.ModelsV2.ItemV2;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> imageUrisActivityPath;
     public long idFk;
 
+    MaterialToolbar topAppBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         idFk = intent.getIntExtra("idListTrip",-1);
-        Log.e("Id Frome List Trip",String.valueOf(idFk));
+        Log.e("Id From List Trip",String.valueOf(idFk));
+        setTitle("Trip Timeline");
+
+        topAppBar =findViewById(R.id.topAppBar);
+        topAppBar.setTitle("Trip Timeline");
+        setSupportActionBar(topAppBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        topAppBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
         FloatingActionButton buttonAddTransportation = findViewById(R.id.button_add_transportation);
@@ -136,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
         //adapter
         recyclerView.setAdapter(adapter);
-        tripViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TripViewModel.class);;
+        tripViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TripViewModel.class);
         tripViewModel.getAllTripsWithIdFK(idFk).observe(this, new Observer<List<Trip>>() {
             @Override
             public void onChanged(@Nullable List<Trip> trips) {
@@ -198,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_PHONE, trip.getLodgingPhone());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_WEBSITE, trip.getLodgingWebsite());
                     intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_EMAIL, trip.getLodgingEmail());
+                    intentLodging.putExtra(LodgingEditActivity.EXTRA_LODGING_EXPENSE, trip.getExpense());
                     intentLodging.putStringArrayListExtra(LodgingEditActivity.EXTRA_LODGING_ARRAY_OF_IMAGE,trip.getUriLodgingPath());
                     startActivityForResult(intentLodging, EDIT_LODGING);
                 } else if (type == 2){
@@ -213,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_WEBSITE,trip.getActivityWebsite());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_EMAIL,trip.getActivityEmail());
                     intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_PRIORITY,trip.getActivityPriority());
+                    intentActivity.putExtra(ActivityActivity.EXTRA_ACTIVITY_EXPENSE, trip.getExpense());
                     intentActivity.putStringArrayListExtra(ActivityActivity.EXTRA_ACTIVITY_ARRAY_OF_IMAGE,trip.getUriActivityPath());
                     startActivityForResult(intentActivity, EDIT_ACTIVITY);
 
@@ -239,6 +259,8 @@ public class MainActivity extends AppCompatActivity {
             String activityPhone= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_PHONE);
             String activityWebsite= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_WEBSITE);
             String activityEmail= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_EMAIL);
+            String activityExpense = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_EXPENSE);
+            int expense = Integer.parseInt(activityExpense);
             int activityPriority= data.getIntExtra(ActivityActivity.EXTRA_ACTIVITY_PRIORITY,1);
             String activityImagePath1 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH1);
             String activityImagePath2 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH2);
@@ -250,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
 
             Trip activity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
                     activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1
-                    ,activityImagePath2,activityImagePath3,imageUrisActivityPath,100);
+                    ,activityImagePath2,activityImagePath3,imageUrisActivityPath,expense);
             activity.setId_fkListTrips(idFk);
 
             tripViewModel.insert(activity);
@@ -276,6 +298,8 @@ public class MainActivity extends AppCompatActivity {
             String activityPhone= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_PHONE);
             String activityWebsite= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_WEBSITE);
             String activityEmail= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_EMAIL);
+            String activityExpense = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_EXPENSE);
+            int expense = Integer.parseInt(activityExpense);
             int activityPriority= data.getIntExtra(ActivityActivity.EXTRA_ACTIVITY_PRIORITY,1);
             String activityImagePath1 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH1);
             String activityImagePath2 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH2);
@@ -286,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
 
             Trip editActivity = new Trip(1,activityTitle, activityDestination, activityDescription,activityStartDateTime,activityEndDateTime,
                     activityAddress,activityPhone,activityWebsite,activityEmail,activityPriority,activityImagePath1,
-                    activityImagePath2,activityImagePath3,imageUrisActivityPath,100);
+                    activityImagePath2,activityImagePath3,imageUrisActivityPath,expense);
             editActivity.setIdTrip(id);
             editActivity.setId_fkListTrips(edfitIdFk);
             //editActivity.setId_fkListTrips(idFk);
@@ -419,6 +443,8 @@ public class MainActivity extends AppCompatActivity {
             String lodgingPhone = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_PHONE);
             String lodgingWebsite = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_WEBSITE);
             String lodgingEmail = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_EMAIL);
+            String lodgingExpense = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_EXPENSE);
+            int expense = Integer.parseInt(lodgingExpense);
             String lodgingImagePath1 = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_IMAGE_PATH1);
             String lodgingImagePath2 = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_IMAGE_PATH1);
             String lodgingImagePath3 = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_IMAGE_PATH3);
@@ -429,7 +455,7 @@ public class MainActivity extends AppCompatActivity {
 
             Trip lodging = new Trip(0,lodgingTitle, lodgingCheckInDateTime, lodgingCheckOutDateTime,lodgingDescription,
                     lodgingAddress, lodgingPhone, lodgingWebsite, lodgingEmail,lodgingImagePath1,lodgingImagePath2,
-                    lodgingImagePath3,imageUrisLodgingPath,100);
+                    lodgingImagePath3,imageUrisLodgingPath,expense);
             lodging.setId_fkListTrips(idFk);
             tripViewModel.insert(lodging);
 
@@ -453,6 +479,8 @@ public class MainActivity extends AppCompatActivity {
             String lodgingPhone = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_PHONE);
             String lodgingWebsite = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_WEBSITE);
             String lodgingEmail = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_EMAIL);
+            String lodgingExpense = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_EXPENSE);
+            int expense = Integer.parseInt(lodgingExpense);
             String lodgingImagePath1 = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_IMAGE_PATH1);
             String lodgingImagePath2 = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_IMAGE_PATH1);
             String lodgingImagePath3 = data.getStringExtra(LodgingEditActivity.EXTRA_LODGING_IMAGE_PATH3);
@@ -462,7 +490,7 @@ public class MainActivity extends AppCompatActivity {
 
             Trip editLodging = new Trip(0,lodgingTitle, lodgingCheckInDateTime, lodgingCheckOutDateTime
                     ,lodgingDescription, lodgingAddress, lodgingPhone, lodgingWebsite, lodgingEmail,lodgingImagePath1,
-                    lodgingImagePath2,lodgingImagePath3,imageUrisLodgingPath,100);
+                    lodgingImagePath2,lodgingImagePath3,imageUrisLodgingPath,expense);
             editLodging.setIdTrip(id);
             editLodging.setId_fkListTrips(editIdFk);
             tripViewModel.update(editLodging);

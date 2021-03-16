@@ -397,6 +397,11 @@ public class LodgingEditActivity extends AppCompatActivity {
             return;
         }
 
+        if(lodgingExpense.trim().isEmpty()){
+            lodgingExpense = "0";
+
+        }
+
         Intent lodgingData = new Intent();
         lodgingData.putExtra(EXTRA_LODGING_TITLE, lodgingTitle);
         lodgingData.putExtra(EXTRA_LODGING_CHECK_IN_DATE_TIME, lodgingCheckInDateTime);

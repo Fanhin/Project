@@ -52,6 +52,9 @@ public class AirplaneFragment extends Fragment {
             "com.example.tripbuddyv2.EXTRA_ArrivalGate";
     public static final String EXTRA_AirplaneDescription =
             "com.example.tripbuddyv2.EXTRA_AirplaneDescription";
+    public static final String EXTRA_AirplaneExpense =
+            "com.example.tripbuddyv2.EXTRA_AirplaneExpense";
+
 
     public static final int EXTRA_Airplane = 1;
 
@@ -68,6 +71,7 @@ public class AirplaneFragment extends Fragment {
     EditText editTextArrivalTerminal;
     EditText editTextArrivalGate;
     EditText editTextAirplaneDescription;
+    EditText editTextAirplanExpense;
 
     Button airplaneSave;
 
@@ -89,7 +93,7 @@ public class AirplaneFragment extends Fragment {
         editTextArrivalTerminal = view.findViewById(R.id.edit_text_arrival_terminal);
         editTextArrivalGate = view.findViewById(R.id.edit_text_arrival_gate);
         editTextAirplaneDescription = view.findViewById(R.id.edit_text_airplane_description);
-
+        editTextAirplanExpense = view.findViewById(R.id.edit_text_airplane_expense);
         airplaneSave = view.findViewById(R.id.airplaneSave);
 
         airplaneSave.setOnClickListener(new View.OnClickListener() {
@@ -132,11 +136,17 @@ public class AirplaneFragment extends Fragment {
         String arrivalTerminalText= editTextArrivalTerminal.getText().toString();;
         String arrivalGateText= editTextArrivalGate.getText().toString();;
         String airplaneDescription = editTextAirplaneDescription.getText().toString();
+        String airplaneExpense = editTextAirplanExpense.getText().toString();
 
         if (airplaneDepartureDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if(airplaneExpense.isEmpty()){
+            airplaneExpense = "0";
+        }
+
 
         Intent data = new Intent();
         data.putExtra(EXTRA_AirplaneDepartureDateTime,airplaneDepartureDateTimeText);
@@ -151,6 +161,7 @@ public class AirplaneFragment extends Fragment {
         data.putExtra(EXTRA_ArrivalTerminal,arrivalTerminalText);
         data.putExtra(EXTRA_ArrivalGate,arrivalGateText);
         data.putExtra(EXTRA_AirplaneDescription,airplaneDescription);
+        data.putExtra(EXTRA_AirplaneExpense,airplaneExpense);
 
         getActivity().setResult(EXTRA_Airplane,data);
         getActivity().finish();

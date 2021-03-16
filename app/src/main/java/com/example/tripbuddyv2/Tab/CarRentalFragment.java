@@ -40,6 +40,7 @@ public class CarRentalFragment extends Fragment {
     public static final  String EXTRA_CarRentalEmail="com.example.tripbuddyv2.EXTRA_CarRentalEmail";
     public static final  String EXTRA_CarRentalDescription="com.example.tripbuddyv2.EXTRA_CarRentalDescription";
     public static final  String EXTRA_CarRentalConfirmation="com.example.tripbuddyv2.EXTRA_CarRentalConfirmation";
+    public static final String EXTRA_CarRentalExpense = "com.example.tripbuddyv2.EXTRA_CarRentalExpense";
 
     public static final int EXTRA_Car_rental = 5;
 
@@ -55,6 +56,7 @@ public class CarRentalFragment extends Fragment {
     EditText editTextCarRentalEmail;
     EditText editTextCarRentalDescription;
     EditText editTextCarRentalConfirmation;
+    EditText getEditTextCarRentalExpense;
 
     Button carRentalSave;
 
@@ -76,6 +78,7 @@ public class CarRentalFragment extends Fragment {
          editTextCarRentalEmail=view.findViewById(R.id.edit_text_car_rental_email);
          editTextCarRentalDescription=view.findViewById(R.id.edit_text_car_rental_description);
         editTextCarRentalConfirmation=view.findViewById(R.id.edit_text_car_rental_confirmation);
+        getEditTextCarRentalExpense=view.findViewById(R.id.edit_text_car_rental_expense);
 
          carRentalSave=view.findViewById(R.id.carRentalSave);
 
@@ -116,10 +119,14 @@ public class CarRentalFragment extends Fragment {
          String carRentalEmailText = editTextCarRentalEmail.getText().toString();
          String carRentalDescriptionText = editTextCarRentalDescription.getText().toString();
          String carRentalConfirmation = editTextCarRentalConfirmation.getText().toString();
+        String carRentalExpense = getEditTextCarRentalExpense.getText().toString();
 
         if (pickupDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
             return;
+        }
+        if (carRentalExpense.isEmpty()) {
+            carRentalExpense = "0";
         }
 
         Intent carRentalData = new Intent();
@@ -135,6 +142,7 @@ public class CarRentalFragment extends Fragment {
         carRentalData.putExtra(EXTRA_CarRentalEmail,carRentalEmailText);
         carRentalData.putExtra(EXTRA_CarRentalDescription,carRentalDescriptionText);
         carRentalData.putExtra(EXTRA_CarRentalConfirmation,carRentalConfirmation);
+        carRentalData.putExtra(EXTRA_CarRentalExpense,carRentalExpense);
 
         getActivity().setResult(EXTRA_Car_rental, carRentalData);
         getActivity().finish();

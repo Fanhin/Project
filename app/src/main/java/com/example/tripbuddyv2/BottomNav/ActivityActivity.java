@@ -390,9 +390,14 @@ public class ActivityActivity extends AppCompatActivity {
         int activityPriority = editTextActivityPriority.getValue();
 
 
-        if (activityTitle.trim().isEmpty()) {
+        if (activityTitle.trim().isEmpty())  {
             Toast.makeText(this, "title cannot empty", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if(activityExpense.trim().isEmpty()){
+            activityExpense = "0";
+
         }
 
         Intent activityData = new Intent();

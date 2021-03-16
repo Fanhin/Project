@@ -41,6 +41,7 @@ public class BoatFragment extends Fragment {
     public static final  String EXTRA_CabinNumber="com.example.tripbuddyv2.EXTRA_CabinNumber";
     public static final  String EXTRA_BoatDescription="com.example.tripbuddyv2.EXTRA_BoatDescription";
     public static final  String EXTRA_BoatPhone="com.example.tripbuddyv2.EXTRA_BoatPhone";
+    public static final String EXTRA_BoatExpense = "com.example.tripbuddyv2.EXTRA_BoatExpense";
 
     public static final int EXTRA_Boat = 4;
 
@@ -57,6 +58,7 @@ public class BoatFragment extends Fragment {
     EditText editTextCabinNumber;
     EditText  editTextBoatDescription;
     EditText  editTextBoatPhone;
+    EditText editTextBoatExpense;
 
     Button boatSave;
 
@@ -81,6 +83,7 @@ public class BoatFragment extends Fragment {
          editTextCabinNumber=view.findViewById(R.id.edit_text_cabin_number);
           editTextBoatDescription=view.findViewById(R.id.edit_text_boat_description);
           editTextBoatPhone = view.findViewById(R.id.edit_text_boat_phone);
+          editTextBoatExpense = view.findViewById(R.id.edit_text_boat_expense);
           boatSave = view.findViewById(R.id.boatSave);
 
         boatSave.setOnClickListener(new View.OnClickListener() {
@@ -123,10 +126,15 @@ public class BoatFragment extends Fragment {
          String cabinNumberText = editTextCabinNumber.getText().toString();
          String boatDescriptionText = editTextBoatDescription.getText().toString();
          String boatPhoneText = editTextBoatPhone.getText().toString();
+        String boatExpenseText = editTextBoatExpense.getText().toString();
 
         if (boatDepartureDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if (boatExpenseText.isEmpty()){
+            boatExpenseText = "0";
         }
 
         Intent boatData = new Intent();
@@ -143,6 +151,7 @@ public class BoatFragment extends Fragment {
         boatData.putExtra(EXTRA_CabinNumber,cabinNumberText);
         boatData.putExtra(EXTRA_BoatDescription,boatDescriptionText);
         boatData.putExtra(EXTRA_BoatPhone,boatPhoneText);
+        boatData.putExtra(EXTRA_BoatExpense,boatExpenseText);
 
 
         getActivity().setResult(EXTRA_Boat, boatData);

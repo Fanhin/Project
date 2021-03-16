@@ -12,12 +12,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="6dp"
         android:background="#FF143C6D" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="6dp"
         android:layout_gravity="bottom"
         android:background="#FF143C6D" />
 
@@ -40,7 +40,7 @@
                 android:src="@drawable/ic_airplane" />
 
             <LinearLayout
-                android:layout_width="10dp"
+                android:layout_width="6dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="10dp"
                 android:background="@color/colorAccent" />

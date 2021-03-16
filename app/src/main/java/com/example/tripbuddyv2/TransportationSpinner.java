@@ -21,6 +21,7 @@ import com.example.tripbuddyv2.Tab.BoatFragment;
 import com.example.tripbuddyv2.Tab.BusFragment;
 import com.example.tripbuddyv2.Tab.CarRentalFragment;
 import com.example.tripbuddyv2.Tab.TrainFragment;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class TransportationSpinner extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -36,6 +37,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final String EXTRA_ArrivalTerminal = "com.example.tripbuddyv2.EXTRA_ArrivalTerminal";
     public static final String EXTRA_ArrivalGate = "com.example.tripbuddyv2.EXTRA_ArrivalGate";
     public static final String EXTRA_AirplaneDescription = "com.example.tripbuddyv2.EXTRA_AirplaneDescription";
+    public static final String EXTRA_AirplaneExpense = "com.example.tripbuddyv2.EXTRA_AirplaneExpense";
 
     //train tag
     public static final  String EXTRA_TrainDepartureDateTime="com.example.tripbuddyv2.EXTRA_TrainDepartureDateTime";
@@ -48,12 +50,14 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final  String EXTRA_TrainCoach="com.example.tripbuddyv2.EXTRA_TrainCoach";
     public static final  String EXTRA_TrainClass="com.example.tripbuddyv2.EXTRA_TrainClass";
     public static final  String EXTRA_TrainSeats="com.example.tripbuddyv2.EXTRA_TrainSeats";
+    public static final String EXTRA_TrainExpense = "com.example.tripbuddyv2.EXTRA_TrainExpense";
     //bus tag
     public static final  String EXTRA_BusDepartureDateTime="com.example.tripbuddyv2.EXTRA_BusDepartureDateTime";
     public static final  String  EXTRA_BusLicensePlate="com.example.tripbuddyv2.EXTRA_BusLicensePlate";
     public static final  String  EXTRA_DepartureBusAddress="com.example.tripbuddyv2.EXTRA_DepartureBusAddress";
     public static final  String  EXTRA_BusArrivalDateTime="com.example.tripbuddyv2.EXTRA_BusArrivalDateTime";
     public static final  String  EXTRA_BusArrivalAddress="com.example.tripbuddyv2.EXTRA_BusArrivalAddress";
+    public static final String EXTRA_BusExpense = "com.example.tripbuddyv2.EXTRA_BusExpense";
     //boat tag
     public static final  String EXTRA_BoatDepartureDateTime="com.example.tripbuddyv2.EXTRA_BoatDepartureDateTime";
     public static final  String EXTRA_BoatName="com.example.tripbuddyv2.EXTRA_BoatName";
@@ -68,6 +72,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final  String EXTRA_CabinNumber="com.example.tripbuddyv2.EXTRA_CabinNumber";
     public static final  String EXTRA_BoatDescription="com.example.tripbuddyv2.EXTRA_BoatDescription";
     public static final  String EXTRA_BoatPhone="com.example.tripbuddyv2.EXTRA_BoatPhone";
+    public static final String EXTRA_BoatExpense = "com.example.tripbuddyv2.EXTRA_BoatExpense";
     //car rental tag
     public static final  String EXTRA_RentalAgency="com.example.tripbuddyv2.EXTRA_RentalAgency";
     public static final  String EXTRA_PickupDateTime="com.example.tripbuddyv2.EXTRA_PickupDateTime";
@@ -81,6 +86,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     public static final  String EXTRA_CarRentalEmail="com.example.tripbuddyv2.EXTRA_CarRentalEmail";
     public static final  String EXTRA_CarRentalDescription="com.example.tripbuddyv2.EXTRA_CarRentalDescription";
     public static final  String EXTRA_CarRentalConfirmation="com.example.tripbuddyv2.EXTRA_CarRentalConfirmation";
+    public static final String EXTRA_CarRentalExpense = "com.example.tripbuddyv2.EXTRA_CarRentalExpense";
 
 
     AirplaneFragment airplaneFragment;
@@ -90,6 +96,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     CarRentalFragment carRentalFragment;
 
     Spinner spinner;
+    MaterialToolbar topAppBar;
 
 
 
@@ -97,6 +104,21 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transportation_spinner);
+
+        topAppBar = findViewById(R.id.topAppBar);
+        topAppBar.setTitle("Add Lodging");
+
+        setSupportActionBar(topAppBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        topAppBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_close));
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         spinner = findViewById(R.id.spinner);
         setTitle("Add Transportation ");

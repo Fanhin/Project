@@ -33,6 +33,7 @@ public class BusFragment extends Fragment {
     public static final  String  EXTRA_DepartureBusAddress="com.example.tripbuddyv2.EXTRA_DepartureBusAddress";
     public static final  String  EXTRA_BusArrivalDateTime="com.example.tripbuddyv2.EXTRA_BusArrivalDateTime";
     public static final  String  EXTRA_BusArrivalAddress="com.example.tripbuddyv2.EXTRA_BusArrivalAddress";
+    public static final String EXTRA_BusExpense = "com.example.tripbuddyv2.EXTRA_BusExpense";
 
     public static final int EXTRA_Bus = 3;
 
@@ -41,6 +42,7 @@ public class BusFragment extends Fragment {
     EditText editTextDepartureBusAddress;
     EditText editTextBusArrivalDateTime;
     EditText editTextBusArrivalAddress;
+    EditText editTextBusExpense;
 
     Button busSave;
 
@@ -57,6 +59,7 @@ public class BusFragment extends Fragment {
          editTextDepartureBusAddress=view.findViewById(R.id.edit_text_departure_bus_address);
          editTextBusArrivalDateTime=view.findViewById(R.id.edit_text_bus_arrival_date_time);
          editTextBusArrivalAddress=view.findViewById(R.id.edit_text_bus_arrival_address);
+        editTextBusExpense = view.findViewById(R.id.edit_text_bus_expense);
 
          busSave = view.findViewById(R.id.busSave);
 
@@ -93,10 +96,15 @@ public class BusFragment extends Fragment {
          String departureBusAddressText = editTextDepartureBusAddress.getText().toString();
          String busArrivalDateTimeText = editTextBusArrivalDateTime.getText().toString();
          String busArrivalAddressText = editTextBusArrivalAddress.getText().toString();
+         String busExpenseText = editTextBusExpense.getText().toString();
 
         if (busDepartureDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if (busExpenseText.isEmpty()){
+            busExpenseText = "0";
         }
 
         Intent busData = new Intent();
@@ -105,6 +113,7 @@ public class BusFragment extends Fragment {
         busData.putExtra(EXTRA_DepartureBusAddress,departureBusAddressText);
         busData.putExtra(EXTRA_BusArrivalDateTime,busArrivalDateTimeText);
         busData.putExtra(EXTRA_BusArrivalAddress,busArrivalAddressText);
+        busData.putExtra(EXTRA_BusExpense,busExpenseText);
 
 
         getActivity().setResult(EXTRA_Bus, busData);

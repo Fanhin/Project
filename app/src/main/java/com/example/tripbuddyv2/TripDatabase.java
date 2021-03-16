@@ -13,7 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.tripbuddyv2.ListTrips.ListTrips;
 import com.example.tripbuddyv2.ListTrips.ListTripsDao;
 
-@Database(entities = {Trip.class, ListTrips.class},version = 41 )
+@Database(entities = {Trip.class, ListTrips.class},version = 42 )
 @TypeConverters({UriConverter.class})
 public abstract class TripDatabase extends RoomDatabase  {
 
@@ -58,6 +58,13 @@ public abstract class TripDatabase extends RoomDatabase  {
 
         @Override
         protected Void doInBackground(Void... voids) {
+
+//            ListTrips listTrips1 = new ListTrips("JapanTrip","2012-11-23 05:00","2012-12-1 13:00","Japan Itinerary");
+////            listTripsDao.insertListTrips(listTrips1);
+////
+////            Trip trip1 = new Trip();
+
+
 
 
             return null;

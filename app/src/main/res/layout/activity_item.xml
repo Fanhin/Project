@@ -2,22 +2,22 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="115dp"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginEnd="4dp"
+    android:layout_height="100dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="6dp"
     android:background="@color/colorAccent"
-    app:cardCornerRadius="3dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="6dp"
         android:background="#FF143C6D" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="6dp"
         android:layout_gravity="bottom"
         android:background="#FF143C6D" />
 
@@ -42,10 +42,10 @@
                 android:src="@drawable/ic_event" />
 
             <LinearLayout
-                android:layout_width="10dp"
+                android:layout_width="6dp"
                 android:layout_height="95dp"
                 android:layout_marginLeft="10dp"
-                android:background="@color/colorAccent" />
+                android:background="#3AB54A" />
 
             <LinearLayout
                 android:layout_width="match_parent"

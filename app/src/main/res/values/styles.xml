@@ -6,10 +6,12 @@
         <item name="colorPrimary">#3F51B5</item>
         <item name="colorPrimaryDark">#143C6D</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
 
+    </style>
 
-
-
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView" >
+        <item name="android:fontFamily">@font/stidti_regular</item>
     </style>
 
 

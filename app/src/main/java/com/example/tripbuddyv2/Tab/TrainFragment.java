@@ -38,6 +38,7 @@ public class TrainFragment extends Fragment {
     public static final  String EXTRA_TrainCoach="com.example.tripbuddyv2.EXTRA_TrainNumber";
     public static final  String EXTRA_TrainClass="com.example.tripbuddyv2.EXTRA_TrainClass";
     public static final  String EXTRA_TrainSeats="com.example.tripbuddyv2.EXTRA_TrainSeats";
+    public static final String EXTRA_TrainExpense = "com.example.tripbuddyv2.EXTRA_TrainExpense";
 
     public static final int EXTRA_Train = 2;
 
@@ -51,6 +52,7 @@ public class TrainFragment extends Fragment {
     EditText  editTextTrainCoach;
     EditText  editTextTrainClass;
     EditText  editTextTrainSeats;
+    EditText editTextTrainExpense;
 
     Button trainSave;
 
@@ -71,6 +73,7 @@ public class TrainFragment extends Fragment {
           editTextTrainCoach=view.findViewById(R.id.edit_text_train_coach);
           editTextTrainClass=view.findViewById(R.id.edit_text_train_class);
           editTextTrainSeats=view.findViewById(R.id.edit_text_train_seats);
+        editTextTrainExpense=view.findViewById(R.id.edit_text_train_expense);
 
           trainSave = view.findViewById(R.id.trainSave);
 
@@ -110,10 +113,14 @@ public class TrainFragment extends Fragment {
          String trainCoachText = editTextTrainCoach.getText().toString();
          String trainClassText= editTextTrainClass.getText().toString();
          String trainSeatsText= editTextTrainSeats.getText().toString();
+        String trainExpenseText= editTextTrainExpense.getText().toString();
 
         if (trainDepartureDateTimeText.isEmpty()) {
             Toast.makeText(getActivity(), " cannot empty", Toast.LENGTH_SHORT).show();
             return;
+        }
+        if (trainExpenseText.isEmpty()) {
+            trainExpenseText = "0";
         }
 
         Intent trainData = new Intent();
@@ -127,6 +134,7 @@ public class TrainFragment extends Fragment {
         trainData.putExtra(EXTRA_TrainCoach,trainCoachText);
         trainData.putExtra(EXTRA_TrainClass,trainClassText);
         trainData.putExtra(EXTRA_TrainSeats,trainSeatsText);
+        trainData.putExtra(EXTRA_TrainExpense,trainExpenseText);
 
         getActivity().setResult(EXTRA_Train, trainData);
         getActivity().finish();

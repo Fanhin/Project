@@ -259,9 +259,9 @@ public class MainActivity extends AppCompatActivity {
             String activityPhone= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_PHONE);
             String activityWebsite= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_WEBSITE);
             String activityEmail= data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_EMAIL);
+            int activityPriority= data.getIntExtra(ActivityActivity.EXTRA_ACTIVITY_PRIORITY,1);
             String activityExpense = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_EXPENSE);
             int expense = Integer.parseInt(activityExpense);
-            int activityPriority= data.getIntExtra(ActivityActivity.EXTRA_ACTIVITY_PRIORITY,1);
             String activityImagePath1 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH1);
             String activityImagePath2 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH2);
             String activityImagePath3 = data.getStringExtra(ActivityActivity.EXTRA_ACTIVITY_IMAGE_PATH3);
@@ -331,10 +331,12 @@ public class MainActivity extends AppCompatActivity {
             String arrivalTerminalText = data.getStringExtra(TransportationSpinner.EXTRA_ArrivalTerminal);
             String arrivalGateText = data.getStringExtra(TransportationSpinner.EXTRA_ArrivalGate);
             String airplaneDescription = data.getStringExtra(TransportationSpinner.EXTRA_AirplaneDescription);
+            String airplaneExpense = data.getStringExtra(TransportationSpinner.EXTRA_AirplaneExpense);
+            int expense = Integer.parseInt(airplaneExpense);
 
             Trip airplaneTransportation = new Trip(2,airplaneDepartureDateTimeText, departureAirplaneAirlineText, departureAirplaneFlightNumberText,
                     departureAirplaneSeatsText, departureAirplaneTerminalText, departureAirplaneGateText,
-                    airplaneArrivalDateTimeText, arrivalArrivingCityOrAirportText, arrivalTerminalText, arrivalGateText,airplaneDescription,100);
+                    airplaneArrivalDateTimeText, arrivalArrivingCityOrAirportText, arrivalTerminalText, arrivalGateText,airplaneDescription,expense);
             airplaneTransportation.setId_fkListTrips(idFk);
 
             tripViewModel.insert(airplaneTransportation);
@@ -353,9 +355,11 @@ public class MainActivity extends AppCompatActivity {
             String trainCoachText = data.getStringExtra(TransportationSpinner.EXTRA_TrainCoach);
             String trainClassText = data.getStringExtra(TransportationSpinner.EXTRA_TrainClass);
             String trainSeatsText = data.getStringExtra(TransportationSpinner.EXTRA_TrainSeats);
+            String trainExpense = data.getStringExtra(TransportationSpinner.EXTRA_TrainExpense);
+            int expense = Integer.parseInt(trainExpense);
 
             Trip trainTransportation = new Trip(3,trainDepartureDateTimeText, departureTrainStationText, departureTrainAddressText,
-                    trainArrivalDateTimeText, trainArrivalStationText, trainTypeText, trainNumberText,trainCoachText, trainClassText, trainSeatsText,100);
+                    trainArrivalDateTimeText, trainArrivalStationText, trainTypeText, trainNumberText,trainCoachText, trainClassText, trainSeatsText,expense);
             trainTransportation.setId_fkListTrips(idFk);
             tripViewModel.insert(trainTransportation);
 
@@ -370,8 +374,11 @@ public class MainActivity extends AppCompatActivity {
             String busArrivalDateTimeText = data.getStringExtra(TransportationSpinner.EXTRA_BusArrivalDateTime);
             String busArrivalAddressText = data.getStringExtra(TransportationSpinner.EXTRA_BusArrivalAddress);
 
+            String busExpense = data.getStringExtra(TransportationSpinner.EXTRA_BusExpense);
+            int expense = Integer.parseInt(busExpense);
+
             Trip busTransportation = new Trip(4,busDepartureDateTimeText, busLicensePlateText, departureBusAddressText,
-                    busArrivalDateTimeText, busArrivalAddressText,100);
+                    busArrivalDateTimeText, busArrivalAddressText,expense);
             busTransportation.setId_fkListTrips(idFk);
 
 
@@ -396,9 +403,12 @@ public class MainActivity extends AppCompatActivity {
             String boatDescriptionText = data.getStringExtra(TransportationSpinner.EXTRA_BoatDescription);
             String boatPhoneText = data.getStringExtra(TransportationSpinner.EXTRA_BoatPhone);
 
+            String boatExpense = data.getStringExtra(TransportationSpinner.EXTRA_BoatExpense);
+            int expense = Integer.parseInt(boatExpense);
+
             Trip boatTransportation = new Trip(5,boatDepartureDateTimeText, boatNameText, departureBoatLocationText,
                     departureBoatAddressText, boatArrivalDateTimeText, arrivalBoatLocationText, arrivalBoatAddressText,
-                    portNameText, portAddressText, cabinTypeText, cabinNumberText, boatDescriptionText,boatPhoneText,100);
+                    portNameText, portAddressText, cabinTypeText, cabinNumberText, boatDescriptionText,boatPhoneText,expense);
             boatTransportation.setId_fkListTrips(idFk);
 
             tripViewModel.insert(boatTransportation);
@@ -421,11 +431,14 @@ public class MainActivity extends AppCompatActivity {
             String carRentalDescriptionText = data.getStringExtra(TransportationSpinner.EXTRA_CarRentalDescription);
             String carRentalConfirmationText = data.getStringExtra(TransportationSpinner.EXTRA_CarRentalConfirmation);
 
+            String carRentalExpense = data.getStringExtra(TransportationSpinner.EXTRA_CarRentalExpense);
+            int expense = Integer.parseInt(carRentalExpense);
+
 
             Trip carRentalTransportation = new Trip(6,rentalAgencyText, pickupDateTimeText, pickupLocationText,
                     carRentalPickupAddressText, carRentalPhoneText, dropOffDateTimeText, dropOffLocationText,
                     dropOffAddressText, carRentalWebsiteText, carRentalEmailText, carRentalDescriptionText,
-                    carRentalConfirmationText,100);
+                    carRentalConfirmationText,expense);
             carRentalTransportation.setId_fkListTrips(idFk);
 
 

@@ -61,8 +61,7 @@ public abstract class TripDatabase extends RoomDatabase  {
 
 //            ListTrips listTrips1 = new ListTrips("JapanTrip","2012-11-23 05:00","2012-12-1 13:00","Japan Itinerary");
 ////            listTripsDao.insertListTrips(listTrips1);
-////
-////            Trip trip1 = new Trip();
+
 
 
 

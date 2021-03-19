@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripbuddyv2.AddTripActivity;
 import com.example.tripbuddyv2.BottomNav.LodgingEditActivity;
+import com.example.tripbuddyv2.Document.DocumentActivity;
 import com.example.tripbuddyv2.Expense.ExpenseActivity;
 import com.example.tripbuddyv2.MainActivity;
 import com.example.tripbuddyv2.R;
@@ -180,7 +181,7 @@ public class ListTripActivity extends AppCompatActivity implements DialogAddTrip
     }
 
     public void ClickDocument(View view){
-        recreate();
+        redirectActivity(this, DocumentActivity.class);
     }
 
     public void ClickExpense(View view){

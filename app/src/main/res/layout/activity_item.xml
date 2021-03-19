@@ -77,6 +77,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:text="1"
+                        android:visibility="invisible"
+
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="10dp" />
@@ -96,7 +98,7 @@
                         android:layout_below="@+id/text_view_title"
                         android:layout_marginLeft="20dp"
                         android:textSize="13sp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="0dp"
                         android:text="Date Time" />
 
                     <TextView
@@ -104,8 +106,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_view_title"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:text="to"
+                        android:layout_marginTop="0dp"
+                        android:text="-"
                         android:textSize="13sp" />
 
                     <TextView
@@ -114,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_view_title"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="0dp"
                         android:textSize="13sp"
                         android:text="End Time" />
 
@@ -128,7 +130,7 @@
                     android:layout_marginLeft="20dp"
                     android:singleLine="true"
 
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="0dp"
                     android:text="Description" />
 
 

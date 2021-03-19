@@ -400,7 +400,7 @@
 <!--                                    android:text="" />-->
 
                                 <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/outlinedTextFieldGate"
+                                    android:id="@+id/outlinedTextFieldGate2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Gate"

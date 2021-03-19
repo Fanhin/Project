@@ -7,13 +7,13 @@
         <item name="colorPrimaryDark">#143C6D</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="android:editTextStyle">@style/RobotoTextViewStyle</item>
 
     </style>
 
     <style name="RobotoTextViewStyle" parent="android:Widget.TextView" >
         <item name="android:fontFamily">@font/stidti_regular</item>
     </style>
-
 
 
     <style name="Widget.MyApp.Button" parent="Widget.MaterialComponents.Button">
@@ -29,6 +29,17 @@
     <style name="Theme.App.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.Louvre.Light.DarkActionBar" parent="Louvre.Theme.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Louvre.Preview" parent="Louvre.Theme.Preview">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 
 
 </resources>

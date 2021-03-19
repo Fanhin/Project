@@ -106,7 +106,7 @@ public class TransportationSpinner extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_transportation_spinner);
 
         topAppBar = findViewById(R.id.topAppBar);
-        topAppBar.setTitle("Add Lodging");
+        topAppBar.setTitle("Add Transportation");
 
         setSupportActionBar(topAppBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

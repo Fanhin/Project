@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tripbuddyv2">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_logo_travel"
@@ -9,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
-        <activity android:name=".Expense.ExpenseSummeryActivity"></activity>
+
+        <activity android:name=".Expense.ExpenseSummeryActivity" />
         <activity android:name=".Expense.ExpenseActivity" />
         <activity
             android:name=".BottomNav.ActivityActivity"
@@ -19,6 +21,7 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".BottomNav.TransportationActivity" />
         <activity android:name=".Tab.TabActivity" />
+        <activity android:name=".Document.DocumentActivity"/>
         <activity
             android:name=".TransportationSpinner"
             android:parentActivityName=".MainActivity" />
@@ -39,6 +42,13 @@
         </activity>
 
         <receiver android:name=".BottomNav.AlertReceiver" />
+
+        <activity
+            android:name="com.andremion.louvre.home.GalleryActivity"
+            android:theme="@style/AppTheme.Louvre.Light.DarkActionBar" />
+        <activity
+            android:name="com.andremion.louvre.preview.PreviewActivity"
+            android:theme="@style/AppTheme.Louvre.Preview" />
     </application>
 
 </manifest>

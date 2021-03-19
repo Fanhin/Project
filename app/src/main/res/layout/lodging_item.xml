@@ -83,7 +83,7 @@
                         android:layout_below="@+id/text_view_title"
                         android:layout_marginLeft="20dp"
                         android:textSize="13sp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="0dp"
                         android:text="Date Time" />
 
                     <TextView
@@ -91,9 +91,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_view_title"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="0dp"
                         android:textSize="13sp"
-                        android:text="to" />
+                        android:text="-" />
 
                     <TextView
                         android:id="@+id/text_view_end_date_time_lodging_item"
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_view_title"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="0dp"
                         android:textSize="13sp"
                         android:singleLine="true"
                         android:text="End Time" />
@@ -113,8 +113,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_view_start_date_time"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="0dp"
                     android:text="Description" />
 
 
